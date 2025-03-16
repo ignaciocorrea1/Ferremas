@@ -1,4 +1,6 @@
-# **Ferremas**
+<div align="center">
+    # **Ferremas**
+</div>
  
 Contexto de ferremas
 
@@ -28,3 +30,6 @@ Para ejecutar el proyecto sigue los siguientes pasos:
 1. Inicia tailwind con el comando **"python manage.py tailwind start"**
 2. Abre otra terminal y ejecuta el servidor de desarrollo con **"python manage.py runserver"**
 
+## Integrantes 🤝
+
+Nombre de los integrantes
