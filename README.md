@@ -14,6 +14,15 @@ El sitio web Ferremas fue desarrollado con las siguientes tecnologias:
 6. **Css:** Lenguaje de estilo utilizado para diseñar la interfaz de usuario.
 7. **JavaScript:** Lenguaje de programación utilizado para hacer las páginas web interactivas.
 
+## Requisitos previos 🔧
+
+Asegúrate de tener instalado los siguiente:
+
+1. Abre la terminal y verifica la instalación de **Python** con **"python --version"**
+2. En la terminal, verifica la instalación de **Pip** con **"pip --version"**
+3. En la terminal, verifica la instalación de **Node.js** con **"node --version"**
+4. En la terminal, verifica la instalación de **npm** con **"npm --version"**
+
 ## Instalación 🔧
 
 Sigue los siguientes pasos para instalar las dependencias del proyecto:
