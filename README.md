@@ -16,12 +16,13 @@ El sitio web Ferremas fue desarrollado con las siguientes tecnologias:
 
 ## Requisitos previos 🔧
 
-Asegúrate de tener instalado los siguiente:
+Es necesario que tengas los siguientes programas instalados para que el proyecto se ejecute correctamente:
 
 1. Abre la terminal y verifica la instalación de **Python** con **"python --version"**
 2. En la terminal, verifica la instalación de **Pip** con **"pip --version"**
 3. En la terminal, verifica la instalación de **Node.js** con **"node --version"**
 4. En la terminal, verifica la instalación de **npm** con **"npm --version"**
+
 
 ## Instalación 🔧
 
