@@ -14,6 +14,10 @@ El sitio web Ferremas fue desarrollado con las siguientes tecnologias:
 6. **CSS:** Lenguaje de estilo utilizado para diseñar la interfaz de usuario.
 7. **JavaScript:** Lenguaje de programación utilizado para hacer las páginas web interactivas.
 
+## Arquitectura utilizada 🏛️
+
+El sitio web Ferremas tiene una arquitectura MVT(Model - View - Template) en conjunto con una arquitectura Orientada a Servicios (SOA)...
+
 ## Requisitos previos 🔧
 
 Es necesario que tengas los siguientes programas instalados para que el proyecto se ejecute correctamente:
