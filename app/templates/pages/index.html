@@ -1,13 +1,59 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="{% static '/assets/images/icon.png' %}" />
+    <title>Ferremas</title>
     {% tailwind_css %}
-</head>
-<body>
-    <h1 class="text-4xl m-12">Hola</h1>
-</body>
+  </head>
+  <body>
+    <!-- Header -->
+    {% include 'base/header.html' %}
+
+    <!-- Main -->
+    <main>
+        <section class="w-full h-[23vh] flex-col-center">
+            <h1
+              class="text-[var(--azulOscuro)] text-[1.4em] font-extrabold mb-[1.5em]"
+            >
+              ¡La mejor selección de materiales y herramientas para la construcción,
+              todo en un solo lugar!
+            </h1>
+            <div class="relative">
+              <input
+                class="w-[55vw] h-[50px] py-7 px-10 placeholder-style border-4 border-[var(--azulOscuro)] rounded-full pl-12 shadow-[4px_4px_10px_var(--azulMedio)]"
+                type="search"
+                placeholder="¿Qué necesitas? Busca aquí"
+              />
+              <span
+                class="material-symbols-outlined absolute left-6 top-1/2 transform -translate-y-1/2 text-[var(--azulMedio)] opacity-50"
+              >
+                search
+              </span>
+            </div>
+          </section>
+          <hr
+            class="w-[90vw] mx-auto border-[1px] border-[var(--azulMedio)] opacity-50"
+          />
+          <section class="flex-col-center mt-[4em]">
+            <h1
+              class="text-[var(--azulOscuro)] text-[1.4em] font-extrabold mb-[4em]"
+            >
+              Descubre nuestros productos más vendidos
+            </h1>
+            <article class="flex-row-center">
+              
+            </article>
+          </section>
+    </main>
+
+    <!-- Footer -->
+    <footer></footer>
+  </body>
 </html>
