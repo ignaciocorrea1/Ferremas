@@ -11,6 +11,25 @@
     al elemento hijo 2.5em, el elemento padre sera de 24px y el elemento hijo de 40px.
 
     la medida rem es independiente, por defecto es 16px, no influye la herencia.
+
+    Medidas:
+
+    rem - ideal para medidas gijas, como márgenes, padding, tamaños de fuente, todo lo que necesite
+    una medida consistente.
+
+    em - se basa en el tamaño fuente del padre.
+    
+    % - ideal para ocupar una proporción específica, ayuda a la responsividad, dependen del 
+    contenedor padre.
+
+    viewports - al igual que los porcentajes ocupan una proporción específica, ayudan a la
+    responsividad, pero estos dependen del tamaño del navegador.
+
+    min, max - establecen límites, previenen que los elementos sean pequeños o grandes, permiten la
+    flexibilidad.
+
+    aspect-ratio: mantiene una proporción consistente entre ancho y alto, es bueno para imágenes, 
+    tarjetas, contenedores, entre otros. 
 */
 
 /* Estilos globales */
@@ -23,12 +42,12 @@
   /* Body */
   body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     display: grid;
     min-height: 100dvh;
     grid-template-rows: auto 1fr auto;
   }
- 
+
   /* Variables */
   :root {
     --azulOscuro: #001ea3;
@@ -41,27 +60,53 @@
 
 /* Estilos personalizados reutilizables */
 @layer components {
-
+  
 }
 
 /* Clases de utilidad */
 @layer utilities {
-    .flex-row-center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  .flex-row-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .flex-col-center {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+  .flex-col-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .placeholder-style::placeholder {
-        font-weight: normal;
-        opacity: 50%;
-        color: var(--azulMedio);
-    }
+  .flex-col-around {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .flex-row-around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .placeholder-style::placeholder {
+    font-weight: normal;
+    opacity: 50%;
+    color: var(--azulMedio);
+  }
+
+  .h1-style {
+    font-size: 1.6em;
+    font-weight: 800;
+    color: var(--azulOscuro);
+  }
+
+  .text-info {
+    color: var(--azulMedio);
+    opacity: 80%;
+    font-weight: 500;
+  }
+  
 }
