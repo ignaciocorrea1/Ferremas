@@ -14,7 +14,7 @@
   </head>
   <body>
     <!-- Header -->
-    {% include 'base/header.html' %}
+    {% include "base/header.html" %}
 
     <!-- Main -->
     <main>
@@ -40,12 +40,12 @@
         />
       </section>
       <section class="flex-col-center w-full">
-        <h1 class="h1-style mb-[10rem] text-center">
+        <h1 class="h1-style mb-[8rem] text-center">
           Descubre nuestros productos más vendidos
         </h1>
         <!-- Carousel de productos más vendidos -->
         <section class="flex-row-around mb-[12em] w-full">
-          <div class="w-[20%] flex justify-end">
+          <div class="w-[20%] flex justify-end pr-4">
             <button
               class="w-[2.5em] h-[2.5em] bg-transparent border-none transform rotate-[-0.25turn]"
             >
@@ -65,10 +65,10 @@
             </button>
           </div>
 
-          <div class="flex-row-around w-full px-4">
+          <div class="flex-row-around max-w-[60%] gap-20 overflow-hidden">
             <!-- Productos generados dinamicamente -->
             <div
-              class="product flex-col-around items-center w-full max-w-[50%] sm:w-64 md:w-72 lg:w-76  border-4 border-[var(--azulOscuro)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
+              class="product flex-col-around items-center w-full max-w-[50%] sm:w-64 md:w-72 lg:w-76 border-4 border-[var(--azulOscuro)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
             >
               <!-- Imagen del producto -->
               <div class="product-img aspect-square mb-4">
@@ -87,15 +87,17 @@
                 <p><span class="text-info">Precio: $XX.XXX</span></p>
               </div>
               <!-- Botones del producto -->
-              <div class="product-buttons flex-col-around w-full h-[30%] space-y-3 mt-auto">
+              <div
+                class="product-buttons flex-col-around w-full h-[30%] space-y-3 mt-auto"
+              >
                 <button
-                  class="text-info w-[90%] h-[45%] bg-[var(--blancoCeleste)] rounded-full"
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
                   type="button"
                 >
                   Ver
                 </button>
                 <button
-                  class="text-info w-[90%] h-[45%] bg-[var(--blancoCeleste)] rounded-full"
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
                   type="button"
                 >
                   Añadir al carro
@@ -105,7 +107,7 @@
 
             <!-- Producto de ejemplo -->
             <div
-              class="product flex-col-around items-center w-full max-w-[50%] sm:w-64 md:w-72 lg:w-76  border-4 border-[var(--azulOscuro)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
+              class="product flex-col-around items-center w-full max-w-[50%] sm:w-64 md:w-72 lg:w-76 border-4 border-[var(--azulOscuro)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
             >
               <!-- Imagen del producto -->
               <div class="product-img aspect-square mb-4">
@@ -124,26 +126,27 @@
                 <p><span class="text-info">Precio: $XX.XXX</span></p>
               </div>
               <!-- Botones del producto -->
-              <div class="product-buttons flex-col-around w-full h-[30%] space-y-3 mt-auto">
+              <div
+                class="product-buttons flex-col-around w-full h-[30%] space-y-3 mt-auto"
+              >
                 <button
-                  class="text-info w-[90%] h-[45%] bg-[var(--blancoCeleste)] rounded-full"
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
                   type="button"
                 >
                   Ver
                 </button>
                 <button
-                  class="text-info w-[90%] h-[45%] bg-[var(--blancoCeleste)] rounded-full"
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
                   type="button"
                 >
                   Añadir al carro
                 </button>
               </div>
             </div>
-
 
             <!-- Producto de ejemplo -->
             <div
-              class="product flex-col-around items-center w-full max-w-[50%] sm:w-64 md:w-72 lg:w-76  border-4 border-[var(--azulOscuro)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
+              class="product flex-col-around items-center w-full max-w-[50%] sm:w-64 md:w-72 lg:w-76 border-4 border-[var(--azulOscuro)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
             >
               <!-- Imagen del producto -->
               <div class="product-img aspect-square mb-4">
@@ -162,25 +165,26 @@
                 <p><span class="text-info">Precio: $XX.XXX</span></p>
               </div>
               <!-- Botones del producto -->
-              <div class="product-buttons flex-col-around w-full h-[30%] space-y-3 mt-auto">
+              <div
+                class="product-buttons flex-col-around w-full h-[30%] space-y-3 mt-auto"
+              >
                 <button
-                  class="text-info w-[90%] h-[45%] bg-[var(--blancoCeleste)] rounded-full"
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
                   type="button"
                 >
                   Ver
                 </button>
                 <button
-                  class="text-info w-[90%] h-[45%] bg-[var(--blancoCeleste)] rounded-full"
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
                   type="button"
                 >
                   Añadir al carro
                 </button>
               </div>
             </div>
-
           </div>
 
-          <div class="w-[20%] flex justify-start">
+          <div class="w-[20%] flex justify-start pl-4">
             <button
               class="w-[2.5em] h-[2.5em] bg-transparent border-none transform rotate-[0.25turn]"
             >
@@ -204,9 +208,6 @@
     </main>
 
     <!-- Footer -->
-    <footer class="w-full min-h-[20rem] bg-[--azulMedio]">
-      <article class="w-1/2"></article>
-      <article class="w-1/2"></article>
-    </footer>
+    {% include "base/footer.html" %}
   </body>
 </html>
