@@ -1,0 +1,128 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="{% static '/assets/images/icon.webp' %}" />
+    <title>Ferremas</title>
+    {% tailwind_css %}
+  </head>
+  <body>
+    <!-- Header -->
+    {% include "base/header.html" %}
+
+    <!-- Main -->
+    <main>
+      <!-- Buscador -->
+      <section class="w-full h-auto py-12 flex-col-center">
+        <div class="relative mb-8">
+          <input
+            class="min-w-[55vw] max-w-[90vw] py-4 px-10 placeholder-style border-4 border-[var(--azulMedio)] rounded-full pl-12 shadow-[2px_2px_15px_rgba(48,84,183,0.5)]"
+            type="search"
+            placeholder="¿Qué necesitas? Busca aquí"
+          />
+          <span
+            class="material-symbols-outlined absolute left-6 top-1/2 transform -translate-y-1/2 text-[var(--azulMedio)] opacity-50"
+          >
+            search
+          </span>
+        </div>
+        <hr
+          class="w-full max-w-[90%] mx-auto mt-1 border-[1px] border-[var(--azulMedio)] opacity-50"
+        />
+      </section>
+
+      <!-- Filtros y productos -->
+      <section class="grid grid-cols-4 grid-rows-1 gap-4 mb-[12em]">
+        <!-- Columna 1: Filtro -->
+        <article
+          class="col-span-1 row-span-full w-full flex justify-center items-start text-[--azulMedio]"
+        >
+          <!-- Contenedor filtros -->
+          <div
+            class="w-[70%] border-4 border-[var(--azulClaroTransparente)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
+          >
+            <!-- Zona superior filtros -->
+            <div class="mb-6">
+              <h1 class="text-center font-medium py-2">Filtros</h1>
+              <hr
+                class="w-full mx-auto border-[1px] border-[var(--azulMedio)] opacity-50"
+              />
+            </div>
+
+            <!-- Opciones filtros -->
+            <div class="w-full flex-col-center">
+              <button
+                class="text-info w-[90%] py-5 mb-4 bg-[var(--blancoCeleste)] rounded-full"
+                type="button"
+              >
+                <span class="mr-1">▼</span>Precio
+              </button>
+              <button
+                class="text-info w-[90%] py-5 mb-4 bg-[var(--blancoCeleste)] rounded-full"
+                type="button"
+              >
+                <span class="mr-1">▼</span>Marca
+              </button>
+              <button
+                class="text-info w-[90%] py-5 mb-4 bg-[var(--blancoCeleste)] rounded-full"
+                type="button"
+              >
+                <span class="mr-1">▼</span>Categoría
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Columna 2 a 3: Productos-->
+        <section class="col-span-3 grid grid-cols-3 gap-y-12 w-full">
+          <!-- Productos generados dinamicamente -->
+          <div
+            class="product flex-col-around items-center w-[65%] border-4 border-[var(--azulMedio)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
+          >
+            <!-- Imagen del producto -->
+            <div class="product-img aspect-square mb-4">
+              <img
+                class="w-[80%] h-full object-cover mx-auto"
+                src="{% static '/assets/images/clavos.webp' %}"
+                alt="Cargando..."
+              />
+            </div>
+            <hr
+              class="w-[90%] mx-auto my-3 border-[1px] border-[var(--azulMedio)] opacity-50"
+            />
+            <!-- Información del producto -->
+            <div class="product-info py-3 flex-col-center">
+              <p><span class="text-info">Nombre del producto</span></p>
+              <p><span class="text-info">Precio: $XX.XXX</span></p>
+            </div>
+            <!-- Botones del producto -->
+            <div
+              class="product-buttons flex-col-around w-full h-[30%] space-y-3 mt-auto"
+            >
+              <a
+                href="{% url 'producto' %}"
+                class="text-center text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
+                >Ver
+              </a>
+              <button
+                class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
+                type="button"
+              >
+                Añadir al carro
+              </button>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    {% include "base/footer.html" %}
+  </body>
+</html>

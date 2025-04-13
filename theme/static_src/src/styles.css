@@ -20,10 +20,10 @@
     em - se basa en el tamaño fuente del padre.
     
     % - ideal para ocupar una proporción específica, ayuda a la responsividad, dependen del 
-    contenedor padre.
+    contenedor padre. (Usar mejor en contenedores hijos)
 
     viewports - al igual que los porcentajes ocupan una proporción específica, ayudan a la
-    responsividad, pero estos dependen del tamaño del navegador.
+    responsividad, pero estos dependen del tamaño del navegador. (Usar mejor en contenedores padres)
 
     min, max - establecen límites, previenen que los elementos sean pequeños o grandes, permiten la
     flexibilidad.
@@ -53,14 +53,20 @@
     --azulOscuro: #001ea3;
     --azulMedio: #3054b7;
     --azulClaro: #3f75ea;
+    --azulClaroTransparente: rgba(63, 117, 234, 0.3);
     --blancoCeleste: #e0ecff;
+    --blancoCelesteTransparente: rgba(224, 236, 255, 0.5);
     --rojo: #ef172e;
   }
 }
 
 /* Estilos personalizados reutilizables */
 @layer components {
-  
+  .h1-style {
+    font-size: 1.6em;
+    font-weight: 800;
+    color: var(--azulOscuro);
+  }
 }
 
 /* Clases de utilidad */
@@ -97,16 +103,9 @@
     color: var(--azulMedio);
   }
 
-  .h1-style {
-    font-size: 1.6em;
-    font-weight: 800;
-    color: var(--azulOscuro);
-  }
-
   .text-info {
     color: var(--azulMedio);
     opacity: 80%;
     font-weight: 500;
   }
-  
 }
