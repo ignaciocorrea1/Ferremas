@@ -7,29 +7,7 @@
 /* 
     Notas:
 
-    la medida em es hereditaria, por defecto es 16px, si se le aplica a un elemento padre 1.5em, y 
-    al elemento hijo 2.5em, el elemento padre sera de 24px y el elemento hijo de 40px.
-
-    la medida rem es independiente, por defecto es 16px, no influye la herencia.
-
-    Medidas:
-
-    rem - ideal para medidas fijas, como márgenes, padding, tamaños de fuente, todo lo que necesite
-    una medida consistente.
-
-    em - se basa en el tamaño fuente del padre.
     
-    % - ideal para ocupar una proporción específica, ayuda a la responsividad, dependen del 
-    contenedor padre. (Usar mejor en contenedores hijos)
-
-    viewports - al igual que los porcentajes ocupan una proporción específica, ayudan a la
-    responsividad, pero estos dependen del tamaño del navegador. (Usar mejor en contenedores padres)
-
-    min, max - establecen límites, previenen que los elementos sean pequeños o grandes, permiten la
-    flexibilidad.
-
-    aspect-ratio: mantiene una proporción consistente entre ancho y alto, es bueno para imágenes, 
-    tarjetas, contenedores, entre otros. 
 */
 
 /* Estilos globales */

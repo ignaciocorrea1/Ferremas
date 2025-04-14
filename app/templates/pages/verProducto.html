@@ -16,6 +16,9 @@
     <!-- Header -->
     {% include "base/header.html" %}
 
+    <!-- Carrito -->
+    {% include "base/carro.html" %}
+
     <!-- Main -->
     <main class="text-[var(--azulMedio)]">
       <!-- Volver al catalogo -->
@@ -98,23 +101,55 @@
 
       <!-- Detalle del producto -->
       <section class="mt-20 mb-[30vh] flex-col-center">
-        <table class="text-start w-[60vw] ">
+        <table class="text-start w-[60vw]">
           <tbody>
             <tr>
-                <td class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCeleste)]">Marca</td>
-                <td class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCeleste)] border-l-2 border-[var(--azulClaroTransparente)]">XXXXXXXX</td>
+              <td
+                class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCeleste)]"
+              >
+                Marca
+              </td>
+              <td
+                class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCeleste)] border-l-2 border-[var(--azulClaroTransparente)]"
+              >
+                XXXXXXXX
+              </td>
             </tr>
             <tr>
-                <td class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCelesteTransparente)]">Categoría</td>
-                <td class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCelesteTransparente)] border-l-2 border-[var(--azulClaroTransparente)]">XXXXXXXX</td>
+              <td
+                class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCelesteTransparente)]"
+              >
+                Categoría
+              </td>
+              <td
+                class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCelesteTransparente)] border-l-2 border-[var(--azulClaroTransparente)]"
+              >
+                XXXXXXXX
+              </td>
             </tr>
             <tr>
-                <td class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCeleste)]">Modelo</td>
-                <td class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCeleste)] border-l-2 border-[var(--azulClaroTransparente)]">XXXXXXXX</td>
+              <td
+                class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCeleste)]"
+              >
+                Modelo
+              </td>
+              <td
+                class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCeleste)] border-l-2 border-[var(--azulClaroTransparente)]"
+              >
+                XXXXXXXX
+              </td>
             </tr>
             <tr>
-                <td class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCelesteTransparente)]">Garantía</td>
-                <td class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCelesteTransparente)] border-l-2 border-[var(--azulClaroTransparente)]">XXXXXXXX</td>
+              <td
+                class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCelesteTransparente)]"
+              >
+                Garantía
+              </td>
+              <td
+                class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCelesteTransparente)] border-l-2 border-[var(--azulClaroTransparente)]"
+              >
+                XXXXXXXX
+              </td>
             </tr>
           </tbody>
         </table>
@@ -123,5 +158,8 @@
 
     <!-- Footer -->
     {% include "base/footer.html" %}
+
+    <!-- Scipts -->
+    <script src="{% static "/js/scriptCarroDes.js" %}"></script>
   </body>
 </html>

@@ -1,0 +1,119 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="{% static '/assets/images/icon.webp' %}" />
+    <title>Ferremas</title>
+    {% tailwind_css %}
+  </head>
+  <body>
+    <!-- Carrito -->
+
+    <!-- Overlay -->
+    <section
+      id="modalCarro"
+      class="hidden w-screen h-screen z-50 fixed inset-0 overflow-hidden bg-black bg-opacity-30"
+    >
+      <div
+        class="modal-content flex flex-col h-full w-[30vw] absolute inset-y-0 right-0 text-white bg-[var(--azulMedio)] transition-all duration-300 transform translate-x-full"
+      >
+        <!-- Resumen y cambio de divisas-->
+        <header class="flex justify-between items-center px-6 pt-8 pb-4">
+          <h1 class="font-bold text-[1.5rem]">RESUMEN</h1>
+
+          <!-- Divisas disponibles -->
+          <div class="flex-col-center">
+            <button
+              class="flex-row-center font-semibold bg-[var(--azulClaro)] px-3 py-1 rounded-lg"
+            >
+              <span class="text-[var(--rojo)]">▼</span>
+              <span class="pr-1">CLP</span>
+              <img
+                class="w-6 h-6"
+                src="{% static '/assets/images/chile.svg'%}"
+                alt=""
+              />
+            </button>
+
+            <!-- <button
+              class="flex-row-center font-semibold bg-[var(--azulClaro)] px-2 py-1 rounded-xl"
+            >
+              <span class="text-red-600">▼</span>
+              <span class="pr-1">USD</span> <img class="w-6 h-6" src="{% static '/assets/images/usa.svg'%}" alt="">
+            </button> -->
+
+            <!-- ▼ ▲ -->
+          </div>
+        </header>
+
+        <hr class="w-full max-w-[95%] mx-auto mt-1 border-[1px] opacity-50" />
+
+        <!-- Productos del carro -->
+        <main class="flex-grow overflow-y-auto">
+          <!-- Productos desde localStorage -->
+          <section class="font-medium">
+            <!-- Producto -->
+            <div class="flex justify-start w-full h-full mt-4">
+              <!-- Imagen y boton eliminar -->
+              <div class="flex-col-center w-[30%] px-6 h-full">
+                <img
+                  class="w-full h-full rounded-xl object-contain"
+                  src="{% static '/assets/images/clavos.webp' %}"
+                  alt="Cargando..."
+                />
+                <button class="pt-2">Eliminar</button>
+              </div>
+
+              <!-- Descripcion producto y contadores -->
+              <div
+                class="flex flex-col justify-start items-start w-[70%] h-full"
+              >
+                <h2>Nombre</h2>
+                <h2 class="py-2">Precio: $</h2>
+                <!-- Contadores -->
+                <div class="w-full h-full flex justify-start items-center">
+                  <button class="text-white text-3xl w-[5%]" type="button">
+                    -
+                  </button>
+
+                  <span class="px-3 text-2xl">1</span>
+
+                  <button class="text-white text-3xl w-[5%]" type="button">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <hr
+              class="w-full max-w-[95%] mx-auto mt-2 border-[1px] opacity-50"
+            />
+          </section>
+        </main>
+
+        <!-- Boton cerrar carro y pagar-->
+        <footer class="flex-row-center mt-auto w-full py-6">
+          <button
+            id="closeCarroBtn"
+            class="mr-4 font-bold text-[var(--azulMedio)] text-lg w-[30%] py-2 bg-white rounded-full"
+            type="button"
+          >
+            Cerrar
+          </button>
+          <button
+            class="ml-4 font-bold text-[var(--azulMedio)] text-lg w-[30%] py-2 bg-white rounded-full"
+            type="button"
+          >
+            Iniciar pago
+          </button>
+        </footer>
+      </div>
+    </section>
+  </body>
+</html>
