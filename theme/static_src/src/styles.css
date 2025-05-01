@@ -4,12 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-    Notas:
-
-    
-*/
-
 /* Estilos globales */
 @layer base {
   /* Global */
