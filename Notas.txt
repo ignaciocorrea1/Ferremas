@@ -1,0 +1,56 @@
+Medidas Css
+
+La medida em es hereditaria, por defecto es 16px, si se le aplica a un elemento padre 1.5em, y al elemento hijo 2.5em, el elemento padre sera de 24px y el elemento hijo de 40px.
+
+La medida rem es independiente, por defecto es 16px, no influye la herencia.
+
+Medidas:
+
+    - rem - ideal para medidas fijas, como márgenes, padding, tamaños de fuente, todo lo que necesite una medida consistente.
+
+    - em - se basa en el tamaño fuente del padre.
+    
+    - % - ideal para ocupar una proporción específica, ayuda a la responsividad, dependen del  contenedor padre. (Usar mejor en contenedores hijos)
+
+    - viewports - al igual que los porcentajes ocupan una proporción específica, ayudan a la responsividad, pero estos dependen del tamaño del navegador. (Usar mejor en contenedores padres)
+
+    - min, max - establecen límites, previenen que los elementos sean pequeños o grandes, permiten la flexibilidad.
+
+    - aspect-ratio: mantiene una proporción consistente entre ancho y alto, es bueno para imágenes,  tarjetas, contenedores, entre otros. 
+
+Tailwind / Css
+
+1. translate-x-full: mueve el elemento horizontalmente a una distancia igual al 100% de su propio ancho.
+
+2. margin autos: mueve el elemento al final del contenedor, ejemplo: mr-auto mueve al final a la derecha al elemento.
+
+3. col-span - row-span: indicar cuantas grillas abarca el elemento.
+
+4. aspect-square: el elemento siempre tiene la misma proporcion, misma altura que ancho.
+
+5. flex-grow: el elemento puede usar todo el espacio disponible del contenedor.
+
+6. flex-shrink: el elemento puede encogerse si hace falta.
+
+7. flex-basis: ancho base.
+
+8. hidden: es display none.
+
+9. pseudo-elementos: si es posible usarlos en etiquetas con el prefijo after: o con @aply.
+
+10. object-contain: el elemento se redimensiona para no perder su relacion de aspecto-
+
+11. object-cover: cubre todo el contenedor, la imagen podria recortarse.
+
+12. rounded: para manejar el border-radius de los elementos.
+
+
+
+JavaScript
+
+1. event.target: apunta a un elemento que haya sido clickeado.
+
+2. event.stopPropagation(): evita que los clicks en ciertas zonas activen los elementos de los padres.
+
+3. setTimeOut(): tiempo de espera para algo.
+

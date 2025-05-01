@@ -1,3 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Estilos globales */
+@layer base {
+  /* Global */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Body */
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  /* Variables */
+  :root {
+    --azulOscuro: #001ea3;
+    --azulMedio: #3054b7;
+    --azulClaro: #3f75ea;
+    --azulClaroTransparente: rgba(63, 117, 234, 0.3);
+    --blancoCeleste: #e0ecff;
+    --blancoCelesteTransparente: rgba(224, 236, 255, 0.5);
+    --rojo: #ef172e;
+  }
+}
+
+/* Estilos personalizados reutilizables */
+@layer components {
+  .h1-style {
+    font-size: 1.6em;
+    font-weight: 800;
+    color: var(--azulOscuro);
+  }
+}
+
+/* Clases de utilidad */
+@layer utilities {
+  .flex-row-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flex-col-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flex-col-around {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .flex-row-around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .placeholder-style::placeholder {
+    font-weight: normal;
+    opacity: 50%;
+    color: var(--azulMedio);
+  }
+
+  .text-info {
+    color: var(--azulMedio);
+    opacity: 80%;
+    font-weight: 500;
+  }
+}

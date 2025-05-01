@@ -1,0 +1,35 @@
+{% load static %}
+
+<div
+  class="navbar-div bg-[var(--azulOscuro)] w-full h-[10vh] flex justify-between items-center text-white"
+>
+  <div class="w-1/4">
+    <img
+      class="w-1/2"
+      src="{% static '/assets/images/logo.webp' %}"
+      alt="Logo..."
+    />
+  </div>
+  <nav class="w-1/2 h-full flex-row-center">
+    <ol
+      class="flex-row-center space-x-10 font-bold text-[1.2em] tracking-wider"
+    >
+      <li><a href="{% url 'index' %}">INICIO</a></li>
+      <li><a href="{% url 'catalogo' %}">CATÁLOGO</a></li>
+      <li><a href="#">CONTACTO</a></li>
+    </ol>
+  </nav>
+  <div class="w-1/4 h-full font-extrabold flex-row-center">
+    <button id="openCarroBtn">
+      <span class="material-symbols-outlined text-[2rem] px-3">
+        shopping_cart
+      </span>
+    </button>
+    <button
+      class="border-4 border-white rounded-full px-6 py-1 tracking-wide"
+      type="button"
+    >
+      Iniciar Sesión
+    </button>
+  </div>
+</div>

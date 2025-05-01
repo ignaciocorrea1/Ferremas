@@ -1,0 +1,165 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="{% static '/assets/images/icon.webp' %}" />
+    <title>Ferremas</title>
+    {% tailwind_css %}
+  </head>
+  <body>
+    <!-- Header -->
+    {% include "base/header.html" %}
+
+    <!-- Carrito -->
+    {% include "base/carro.html" %}
+
+    <!-- Main -->
+    <main class="text-[var(--azulMedio)]">
+      <!-- Volver al catalogo -->
+      <div class="w-full mt-6 flex justify-start items-center">
+        <a
+          href="{% url 'catalogo' %}"
+          class="text-center text-info w-[7%] py-1 ml-4 bg-[var(--blancoCeleste)] rounded-full"
+        >
+          Volver
+        </a>
+      </div>
+
+      <!-- Producto-->
+      <section class="grid grid-cols-2 w-full place-items-center">
+        <!-- Columna 1: Imagen del producto -->
+        <div class="w-full h-full flex justify-center items-center">
+          <img
+            class="w-[85%] h-[75%] border-4 border-[var(--azulClaroTransparente)] rounded-2xl object-contain"
+            src="{% static '/assets/images/clavos.webp' %}"
+            alt="Cargando..."
+          />
+        </div>
+
+        <!-- Columna 2: Información del producto -->
+        <div
+          class="w-full h-[75%] pr-[15%] flex flex-col justify-between items-center"
+        >
+          <!-- Primera mitad informacion producto -->
+          <div class="flex flex-col justify-start items-start">
+            <h2 class="mb-[5%] font-bold">Nombre del producto</h2>
+
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit,
+              quis architecto corporis optio beatae fugit mollitia cum sequi
+              quisquam officiis, atque aperiam! Deserunt cupiditate dolore ex
+              maxime ratione sapiente assumenda?
+            </p>
+          </div>
+
+          <!-- Segunda mitad informacion producto -->
+          <div class="w-full">
+            <!-- Precio y contador -->
+            <div class="w-full mb-6 flex flex-col justify-center items-start">
+              <h2 class="py-4 text-2xl font-medium">$XXX.XXX</h2>
+
+              <!-- Contadores -->
+              <div class="w-full h-full flex justify-start items-center">
+                <button
+                  class="text-info w-[5%] py-2 bg-[var(--blancoCeleste)] rounded-2xl"
+                  type="button"
+                >
+                  <span class="font-extrabold">-</span>
+                </button>
+
+                <span class="px-6 text-3xl">1</span>
+
+                <button
+                  class="text-info w-[5%] py-2 bg-[var(--blancoCeleste)] rounded-2xl"
+                  type="button"
+                >
+                  <span class="font-extrabold">+</span>
+                </button>
+              </div>
+            </div>
+            <!-- Boton para añadir al carro -->
+            <div class="w-full flex-row-center">
+              <button
+                class="text-info w-[25%] py-3 bg-[var(--blancoCeleste)] rounded-full"
+                type="button"
+              >
+                Añadir al carro
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr
+        class="w-full max-w-[95%] mx-auto mt-1 border-2 border-[var(--azulMedio)] opacity-20"
+      />
+
+      <!-- Detalle del producto -->
+      <section class="mt-20 mb-[30vh] flex-col-center">
+        <table class="text-start w-[60vw]">
+          <tbody>
+            <tr>
+              <td
+                class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCeleste)]"
+              >
+                Marca
+              </td>
+              <td
+                class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCeleste)] border-l-2 border-[var(--azulClaroTransparente)]"
+              >
+                XXXXXXXX
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCelesteTransparente)]"
+              >
+                Categoría
+              </td>
+              <td
+                class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCelesteTransparente)] border-l-2 border-[var(--azulClaroTransparente)]"
+              >
+                XXXXXXXX
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCeleste)]"
+              >
+                Modelo
+              </td>
+              <td
+                class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCeleste)] border-l-2 border-[var(--azulClaroTransparente)]"
+              >
+                XXXXXXXX
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCelesteTransparente)]"
+              >
+                Garantía
+              </td>
+              <td
+                class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCelesteTransparente)] border-l-2 border-[var(--azulClaroTransparente)]"
+              >
+                XXXXXXXX
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    {% include "base/footer.html" %}
+
+    <!-- Scipts -->
+    <script src="{% static "/js/scriptCarroDes.js" %}"></script>
+  </body>
+</html>

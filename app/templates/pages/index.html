@@ -1,13 +1,219 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="{% static '/assets/images/icon.webp' %}" />
+    <title>Ferremas</title>
     {% tailwind_css %}
-</head>
-<body>
-    <h1 class="text-4xl m-12">Hola</h1>
-</body>
+  </head>
+  <body>
+    <!-- Header -->
+    {% include "base/header.html" %}
+
+    <!-- Carrito -->
+    {% include "base/carro.html" %}
+
+    <!-- Main -->
+    <main>
+      <section class="w-full mt-8 h-auto py-12 flex-col-center">
+        <h1 class="h1-style mb-9 text-center">
+          ¡La mejor selección de materiales y herramientas para la construcción,
+          todo en un solo lugar!
+        </h1>
+        <div class="relative mb-8">
+          <input
+            class="min-w-[55vw] max-w-[90vw] py-4 px-10 placeholder-style border-4 border-[var(--azulMedio)] rounded-full pl-12 shadow-[2px_2px_15px_rgba(48,84,183,0.5)]"
+            type="search"
+            placeholder="¿Qué necesitas? Busca aquí"
+          />
+          <span
+            class="material-symbols-outlined absolute left-6 top-1/2 transform -translate-y-1/2 text-[var(--azulMedio)] opacity-50"
+          >
+            search
+          </span>
+        </div>
+        <hr
+          class="w-full max-w-[90%] mx-auto mt-5 border-[1px] border-[var(--azulMedio)] opacity-50"
+        />
+      </section>
+      <section class="flex-col-center w-full">
+        <h1 class="h1-style mb-[8rem] text-center">
+          Descubre nuestros productos más vendidos
+        </h1>
+        <!-- Carousel de productos más vendidos -->
+        <section class="flex-row-around mb-[12em] w-full">
+          <div class="w-[20%] flex justify-end pr-4">
+            <button
+              class="w-[2.5em] h-[2.5em] bg-transparent border-none transform rotate-[-0.25turn]"
+            >
+              <svg
+                viewBox="0 0 100 100"
+                width="100%"
+                height="100%"
+                fill="none"
+                opacity="0.7"
+              >
+                <path
+                  d="M50 10 L10 90 L90 90 Z"
+                  stroke="var(--azulClaro)"
+                  stroke-width="15"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div class="flex-row-around max-w-[60%] gap-20 overflow-hidden">
+            <!-- Productos generados dinamicamente -->
+            <div
+              class="product flex-col-around items-center w-full max-w-[50%] sm:w-64 md:w-72 lg:w-76 border-4 border-[var(--azulMedio)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
+            >
+              <!-- Imagen del producto -->
+              <div class="product-img aspect-square mb-4">
+                <img
+                  class="w-[80%] h-full object-cover mx-auto"
+                  src="{% static '/assets/images/clavos.webp' %}"
+                  alt="Producto..."
+                />
+              </div>
+              <hr
+                class="w-[90%] mx-auto my-3 border-[1px] border-[var(--azulMedio)] opacity-50"
+              />
+              <!-- Información del producto -->
+              <div class="product-info py-3 flex-col-center">
+                <p><span class="text-info">Nombre del producto</span></p>
+                <p><span class="text-info">Precio: $XX.XXX</span></p>
+              </div>
+              <!-- Botones del producto -->
+              <div
+                class="product-buttons flex-col-around w-full h-[30%] space-y-3 mt-auto"
+              >
+                <button
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
+                  type="button"
+                >
+                  Ver
+                </button>
+                <button
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
+                  type="button"
+                >
+                  Añadir al carro
+                </button>
+              </div>
+            </div>
+
+            <!-- Producto de ejemplo -->
+            <div
+              class="product flex-col-around items-center w-full max-w-[50%] sm:w-64 md:w-72 lg:w-76 border-4 border-[var(--azulMedio)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
+            >
+              <!-- Imagen del producto -->
+              <div class="product-img aspect-square mb-4">
+                <img
+                  class="w-[80%] h-full object-cover mx-auto"
+                  src="{% static '/assets/images/clavos.webp' %}"
+                  alt="Producto..."
+                />
+              </div>
+              <hr
+                class="w-[90%] mx-auto my-3 border-[1px] border-[var(--azulMedio)] opacity-50"
+              />
+              <!-- Información del producto -->
+              <div class="product-info py-3 flex-col-center">
+                <p><span class="text-info">Nombre del producto</span></p>
+                <p><span class="text-info">Precio: $XX.XXX</span></p>
+              </div>
+              <!-- Botones del producto -->
+              <div
+                class="product-buttons flex-col-around w-full h-[30%] space-y-3 mt-auto"
+              >
+                <button
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
+                  type="button"
+                >
+                  Ver
+                </button>
+                <button
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
+                  type="button"
+                >
+                  Añadir al carro
+                </button>
+              </div>
+            </div>
+
+            <!-- Producto de ejemplo -->
+            <div
+              class="product flex-col-around items-center w-full max-w-[50%] sm:w-64 md:w-72 lg:w-76 border-4 border-[var(--azulMedio)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
+            >
+              <!-- Imagen del producto -->
+              <div class="product-img aspect-square mb-4">
+                <img
+                  class="w-[80%] h-full object-cover mx-auto"
+                  src="{% static '/assets/images/clavos.webp' %}"
+                  alt="Producto..."
+                />
+              </div>
+              <hr
+                class="w-[90%] mx-auto my-3 border-[1px] border-[var(--azulMedio)] opacity-50"
+              />
+              <!-- Información del producto -->
+              <div class="product-info py-3 flex-col-center">
+                <p><span class="text-info">Nombre del producto</span></p>
+                <p><span class="text-info">Precio: $XX.XXX</span></p>
+              </div>
+              <!-- Botones del producto -->
+              <div
+                class="product-buttons flex-col-around w-full h-[30%] space-y-3 mt-auto"
+              >
+                <button
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
+                  type="button"
+                >
+                  Ver
+                </button>
+                <button
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
+                  type="button"
+                >
+                  Añadir al carro
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-[20%] flex justify-start pl-4">
+            <button
+              class="w-[2.5em] h-[2.5em] bg-transparent border-none transform rotate-[0.25turn]"
+            >
+              <svg
+                viewBox="0 0 100 100"
+                width="100%"
+                height="100%"
+                fill="none"
+                opacity="0.7"
+              >
+                <path
+                  d="M50 10 L10 90 L90 90 Z"
+                  stroke="var(--azulClaro)"
+                  stroke-width="15"
+                />
+              </svg>
+            </button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    {% include "base/footer.html" %}
+
+    <!-- Scripts -->
+    <script src="{% static "/js/scriptCarroDes.js" %}"></script>
+  </body>
 </html>

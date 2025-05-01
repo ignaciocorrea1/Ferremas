@@ -1,6 +1,5 @@
 django
-djangorestframework
 django-filter
-django-cors-headers
 django-tailwind[reload]
 django-browser-reload
+Pillow
