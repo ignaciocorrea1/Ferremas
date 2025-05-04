@@ -61,19 +61,19 @@
             <!-- Opciones filtros -->
             <div class="w-full flex-col-center">
               <button
-                class="text-info w-[90%] py-5 mb-4 bg-[var(--blancoCeleste)] rounded-full"
+                class="text-info w-[90%] py-3 mb-4 bg-[var(--blancoCeleste)] rounded-full"
                 type="button"
               >
                 <span class="mr-1">▼</span>Precio
               </button>
               <button
-                class="text-info w-[90%] py-5 mb-4 bg-[var(--blancoCeleste)] rounded-full"
+                class="text-info w-[90%] py-3 mb-4 bg-[var(--blancoCeleste)] rounded-full"
                 type="button"
               >
                 <span class="mr-1">▼</span>Marca
               </button>
               <button
-                class="text-info w-[90%] py-5 mb-4 bg-[var(--blancoCeleste)] rounded-full"
+                class="text-info w-[90%] py-3 mb-4 bg-[var(--blancoCeleste)] rounded-full"
                 type="button"
               >
                 <span class="mr-1">▼</span>Categoría
@@ -85,42 +85,45 @@
         <!-- Columna 2 a 3: Productos-->
         <section class="col-span-3 grid grid-cols-3 gap-y-12 w-full">
           <!-- Productos generados dinamicamente -->
-          <div
-            class="product flex-col-around items-center w-[65%] border-4 border-[var(--azulMedio)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
-          >
-            <!-- Imagen del producto -->
-            <div class="product-img aspect-square mb-4">
-              <img
-                class="w-[80%] h-full object-cover mx-auto"
-                src="{% static '/assets/images/clavos.webp' %}"
-                alt="Cargando..."
-              />
-            </div>
-            <hr
-              class="w-[90%] mx-auto my-3 border-[1px] border-[var(--azulMedio)] opacity-50"
-            />
-            <!-- Información del producto -->
-            <div class="product-info py-3 flex-col-center">
-              <p><span class="text-info">Nombre del producto</span></p>
-              <p><span class="text-info">Precio: $XX.XXX</span></p>
-            </div>
-            <!-- Botones del producto -->
+          {% for producto in productos %}
             <div
-              class="product-buttons flex-col-around w-full h-[30%] space-y-3 mt-auto"
+              class="product flex-col-around items-center w-[15vw] h-[45vh] border-4 border-[var(--azulMedio)] rounded-2xl p-4 shadow-[2px_2px_10px_rgba(48,84,183,0.5)]"
             >
-              <a
-                href="{% url 'producto' %}"
-                class="text-center text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
-                >Ver
-              </a>
-              <button
-                class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
-                type="button"
+              <!-- Imagen del producto -->
+              <div class="product-img mb-4 h-[40%]">
+                <img
+                  class="w-[90%] h-full object-cover mx-auto"
+                  src="{{producto.imagen}}"
+                  alt="Cargando..."
+                />
+              </div>
+              <hr
+                class="w-[90%] mx-auto my-3 border-[1px] border-[var(--azulMedio)] opacity-50"
+              />
+              <!-- Información del producto -->
+              <div class="product-info py-3 flex-col-center text-center h-[20%]">
+                <p class="pb-2"><span class="text-info">{{producto.nombre}}</span></p>
+                <p><span class="text-info">Precio: ${{producto.precio}}</span></p>
+              </div>
+              <!-- Botones del producto -->
+              <div
+                class="product-buttons flex-col-around w-full h-[40%] space-y-3 mt-auto"
               >
-                Añadir al carro
-              </button>
+                <a
+                  href="{% url 'producto' %}"
+                  class="text-center text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
+                  >Ver
+                </a>
+                <button
+                  id="{{producto.id}}"
+                  class="text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
+                  type="button"
+                >
+                  Añadir al carro
+                </button>
+              </div>
             </div>
-          </div>
+          {% endfor %}
         </section>
       </section>
     </main>
