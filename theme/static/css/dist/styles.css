@@ -956,8 +956,20 @@ body {
   height: 2.5em;
 }
 
+.h-\[20\%\]{
+  height: 20%;
+}
+
 .h-\[30\%\]{
   height: 30%;
+}
+
+.h-\[40\%\]{
+  height: 40%;
+}
+
+.h-\[45vh\]{
+  height: 45vh;
 }
 
 .h-\[75\%\]{
@@ -1008,6 +1020,10 @@ body {
   width: 1.5rem;
 }
 
+.w-\[15vw\]{
+  width: 15vw;
+}
+
 .w-\[2\.5em\]{
   width: 2.5em;
 }
@@ -1034,10 +1050,6 @@ body {
 
 .w-\[60vw\]{
   width: 60vw;
-}
-
-.w-\[65\%\]{
-  width: 65%;
 }
 
 .w-\[7\%\]{
@@ -1379,14 +1391,13 @@ body {
   padding-bottom: 1rem;
 }
 
-.py-5{
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
 .py-6{
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.pb-2{
+  padding-bottom: 0.5rem;
 }
 
 .pb-4{
