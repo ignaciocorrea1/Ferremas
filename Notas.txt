@@ -54,3 +54,7 @@ JavaScript
 
 3. setTimeOut(): tiempo de espera para algo.
 
+4. Declaraciones:
+    Valor fijo (nunca cambia) =	const
+    Valor que cambiará (contador, etc.) = let
+    Código antiguo (evitar) = var

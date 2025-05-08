@@ -115,7 +115,7 @@
                   >Ver
                 </a>
                 <button
-                  data-id="{{producto.id}}"
+                  data-addid="{{producto.id}}"
                   class="add-carrito text-info w-[90%] py-2 bg-[var(--blancoCeleste)] rounded-full"
                   type="button"
                 >
@@ -131,8 +131,7 @@
     <!-- Footer -->
     {% include "base/footer.html" %}
 
-    <!-- Scipts -->
-    <script src="{% static "/js/scriptCarroDes.js" %}"></script>
-    <script src="{% static "/js/scriptCarroFnc.js" %}"></script>
+    <!-- Scripts -->
+     <script type="module" src="{% static 'js/main.js' %}"></script>
   </body>
 </html>

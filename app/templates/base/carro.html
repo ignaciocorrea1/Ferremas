@@ -63,8 +63,12 @@
         </main>
 
         <!-- Boton cerrar carro y pagar-->
-        <footer class="flex-row-center mt-auto w-full py-6">
-          <button
+        <footer class="flex-col-center mt-auto w-full">
+          <div class="w-full max-w-[95%] pt-4">
+            <h2 class="font-semibold text-xl">Total: $<span id="carro-total">0</span></h2>
+          </div>
+          <div class="w-full flex-row-center py-6">
+            <button
             id="closeCarroBtn"
             class="mr-4 font-bold text-[var(--azulMedio)] text-lg w-[30%] py-2 bg-white rounded-full"
             type="button"
@@ -77,6 +81,7 @@
           >
             Iniciar pago
           </button>
+          </div>
         </footer>
       </div>
     </section>
