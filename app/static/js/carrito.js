@@ -8,8 +8,7 @@ export function despliegue_carrito() {
   // Se vacia el contenedor
   $carroSection.innerHTML = "";
 
-  // Si esta fuera solo genera el carrito una vez, es necesario que se recupere el carro
-  // en cada apertura del modal
+  // Si esta fuera solo genera el carrito una vez, es necesario que se recupere el carro en cada apertura del modal
   const carrito = get_carrito();
 
   // Se recorren los productos del carrito y se agregan al HTML
@@ -30,9 +29,9 @@ export function despliegue_carrito() {
             <h2 class="pt-3 pb-3">Precio: $${producto.precio}</h2>
         </div>
         <div class="w-full h-full flex justify-start items-center">
-            <button class="text-white text-3xl w-[5%]" type="button">-</button>
-            <span class="px-3 text-2xl">${producto.cantidad}</span>
-            <button class="text-white text-3xl w-[5%]" type="button">+</button>
+            <button data-menid=${producto.id} class="menos-cant text-white text-3xl w-[5%]" type="button">-</button>
+            <span id="pro-cantidad-${producto.id}" class="px-3 text-2xl">${producto.cantidad}</span>
+            <button data-masid=${producto.id} class="mas-cant text-white text-3xl w-[5%]" type="button">+</button>
         </div>
         </div>
     </div>
@@ -44,7 +43,7 @@ export function despliegue_carrito() {
 
   // Se calcula el total de los productos en el carrito
   calculo_total();
-}
+};
 
 export function calculo_total() {
   // Se vacia el contenido
@@ -62,4 +61,4 @@ export function calculo_total() {
 
   // Se manda al HTML
   $carroTotal.textContent = totalCarro;
-}
+};
