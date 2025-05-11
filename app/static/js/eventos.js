@@ -1,8 +1,9 @@
 import { abrir_modal_carrito, cerrar_modal_carrito } from "./modales.js";
 import { get_producto_api } from "./api.js";
-import { add_producto, del_producto, add_cantidad } from "./storage.js";
+import { add_producto, del_producto, add_cantidad, del_cantidad } from "./storage.js";
 
-/* Constantes */
+/* -------------------------------------------------------- Constantes -------------------------------------------------------- */
+
 const $openCarroBtn = document.getElementById("openCarroBtn");
 const $closeCarroBtn = document.getElementById("closeCarroBtn");
 const $modalContent = document.querySelector(".modal-content");
@@ -11,9 +12,11 @@ const $carroSection = document.getElementById("carro-section");
 
 const $addCarroBtns = document.querySelectorAll(".add-carrito");
 
+/* -------------------------------------------------------- Eventos -------------------------------------------------------- */
+
 export function eventos() {
-  /* -------------------------------------------------------- Eventos modales -------------------------------------------------------- */
-  
+  /* -------------------------------------------------------- Modales -------------------------------------------------------- */
+
   /* Abrir modal */
   $openCarroBtn.addEventListener("click", () => abrir_modal_carrito());
 
@@ -39,7 +42,7 @@ export function eventos() {
     e.stopPropagation();
   });
 
-  /* -------------------------------------------------------- Eventos funciones carrito -------------------------------------------------------- */
+  /* -------------------------------------------------------- Funciones carrito -------------------------------------------------------- */
 
   /* Agregar producto */
   $addCarroBtns.forEach((btn) => {
@@ -49,6 +52,7 @@ export function eventos() {
 
       // Se realiza una solicitud get a la api
       const producto = await get_producto_api(id);
+      console.log("Producto obtenido: ", producto);
       // Se añade el producto al localStorage
       add_producto(producto);
     });
@@ -64,26 +68,26 @@ export function eventos() {
       del_producto(id);
 
       // Eliminacion del HTML
-      const $productoDin = document.getElementById("producto-din-"+id);
+      const $productoDin = document.getElementById("producto-din-" + id);
       $carroSection.removeChild($productoDin);
 
-      const $productoDinHR = document.getElementById("producto-din-hr-"+id);
+      const $productoDinHR = document.getElementById("producto-din-hr-" + id);
       $carroSection.removeChild($productoDinHR);
-    };
+    }
   });
 
   /* Aumentar la cantidad de un producto */
   $carroSection.addEventListener("click", (e) => {
     if (e.target.classList.contains("mas-cant")) {
       const id = Number(e.target.dataset.masid);
-      
-      let $cantidad = document.getElementById("pro-cantidad-"+id);
+
+      let $cantidad = document.getElementById("pro-cantidad-" + id);
 
       if (add_cantidad(id)) {
         // Se obtiene la cantidad del dom y se actualiza
         let cantidadActual = Number($cantidad.textContent);
         let nuevaCantidad = cantidadActual + 1;
-        
+
         // Se cambia la cantidad
         $cantidad.textContent = String(nuevaCantidad);
       } else {
@@ -98,7 +102,7 @@ export function eventos() {
           // 2: Se quita el movimiento a la derecha y se desplaza a izquierda
           $cantidad.classList.remove("translate-x-1");
           $cantidad.classList.add("-translate-x-1");
-        
+
           // 3:
           setTimeout(() => {
             // 3: Se quita el movimiento a la izquierda y se desplaza a la posicion original
@@ -106,10 +110,45 @@ export function eventos() {
             $cantidad.classList.add("translate-x-0");
           }, 70);
         }, 70);
-      };
-    };
+      }
+    }
   });
 
   /* Disminuir la cantidad de un producto */
+  $carroSection.addEventListener("click", (e) => {
+    if (e.target.classList.contains("menos-cant")) {
+      const id = Number(e.target.dataset.menid);
 
-};
+      let $cantidad = document.getElementById("pro-cantidad-" + id);
+
+      if (del_cantidad(id)) {
+        // Se obtiene la cantidad del dom y se actualiza
+        let cantidadActual = Number($cantidad.textContent);
+        let nuevaCantidad = cantidadActual - 1;
+
+        // Se cambia la cantidad
+        $cantidad.textContent = String(nuevaCantidad);
+      } else {
+        // Transicion de 70ms
+        $cantidad.classList.add("transition", "duration-70");
+
+        // 1: Se mueve a la derecha
+        $cantidad.classList.add("translate-x-1");
+
+        // 2:
+        setTimeout(() => {
+          // 2: Se quita el movimiento a la derecha y se desplaza a izquierda
+          $cantidad.classList.remove("translate-x-1");
+          $cantidad.classList.add("-translate-x-1");
+
+          // 3:
+          setTimeout(() => {
+            // 3: Se quita el movimiento a la izquierda y se desplaza a la posicion original
+            $cantidad.classList.remove("-translate-x-1");
+            $cantidad.classList.add("translate-x-0");
+          }, 70);
+        }, 70);
+      }
+    }
+  });
+}

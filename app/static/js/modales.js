@@ -1,8 +1,11 @@
 import { despliegue_carrito } from "./carrito.js";
 
-/* Constantes */
+/* -------------------------------------------------------- Constantes -------------------------------------------------------- */
+
 const $carro = document.getElementById("modalCarro");
 const $modalContent = document.querySelector(".modal-content");
+
+/* -------------------------------------------------------- Apertura del carrito -------------------------------------------------------- */
 
 export const abrir_modal_carrito = () => {
   // Se le quita el hidden 
@@ -12,12 +15,12 @@ export const abrir_modal_carrito = () => {
   setTimeout(() => {
     $modalContent.classList.remove("translate-x-full");
     $modalContent.classList.add("translate-x-0");
-  }, 20);
+  }, 10);
 
   // Se despliegan los productos
   setTimeout(() => {
     despliegue_carrito();
-  }, 10);
+  }, 20);
 };
 
 export const cerrar_modal_carrito = () => {
@@ -30,3 +33,5 @@ export const cerrar_modal_carrito = () => {
     $carro.classList.add("hidden");
   }, 300);
 };
+
+/* -------------------------------------------------------- Dropdown button divisas -------------------------------------------------------- */

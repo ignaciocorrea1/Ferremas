@@ -1,6 +1,7 @@
 import { get_carrito } from "./storage.js";
 
-/* Constantes */
+/* -------------------------------------------------------- Constantes -------------------------------------------------------- */
+
 const $carroSection = document.getElementById("carro-section");
 const $carroTotal = document.getElementById("carro-total");
 
