@@ -1,6 +1,12 @@
 import { abrir_modal_carrito, cerrar_modal_carrito } from "./modales.js";
 import { get_producto_api } from "./api.js";
-import { add_producto, del_producto, add_cantidad, del_cantidad } from "./storage.js";
+import {
+  add_producto,
+  del_producto,
+  add_cantidad,
+  del_cantidad,
+  set_divisa,
+} from "./storage.js";
 
 /* -------------------------------------------------------- Constantes -------------------------------------------------------- */
 
@@ -11,6 +17,9 @@ const $carro = document.getElementById("modalCarro");
 const $carroSection = document.getElementById("carro-section");
 
 const $addCarroBtns = document.querySelectorAll(".add-carrito");
+
+const $selectDivisa = document.getElementById("divisa-select");
+const $flechasDivisas = document.querySelectorAll(".flechas-divisas")
 
 /* -------------------------------------------------------- Eventos -------------------------------------------------------- */
 
@@ -151,4 +160,12 @@ export function eventos() {
       }
     }
   });
-}
+
+  /* -------------------------------------------------------- Funciones divisa -------------------------------------------------------- */
+
+  /* Cambio de divisa */
+  $selectDivisa.addEventListener("change", (e) => {
+    const nuevaDivisa = e.target.value; // Se obtiene el valor seleccionado
+    set_divisa(nuevaDivisa); // Se setea el nuevo valor
+  });
+};

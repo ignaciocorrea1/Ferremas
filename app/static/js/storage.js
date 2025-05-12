@@ -121,3 +121,15 @@ export function del_cantidad(id) {
     return false;
   };
 };
+
+/* -------------------------------------------------------- Manejo de las divisas -------------------------------------------------------- */
+
+/* Obtencion de la divisa */
+export function get_divisa() {
+  return localStorage.getItem("Divisa") || "clp"; // Retorna usa o clp por defecto
+};
+
+/* Guardar la divisa */
+export function set_divisa(divisa) {
+  localStorage.setItem("Divisa", divisa);
+};
