@@ -7,6 +7,7 @@ export function get_carrito() {
 
 /* Guardar el producto en el localStorage */
 export function set_carrito(carrito) {
+  console.log("Carrito actualizado: ", carrito)
   localStorage.setItem("Carrito", JSON.stringify(carrito));
 };
 
@@ -132,4 +133,21 @@ export function get_divisa() {
 /* Guardar la divisa */
 export function set_divisa(divisa) {
   localStorage.setItem("Divisa", divisa);
+};
+
+/* Conversion de valores */
+export function convertir_precios(divisa_base, nueva_divisa, valor_dolar) {
+  let carrito = get_carrito();
+
+  carrito = carrito.map(producto => {
+    if (divisa_base === "clp" && nueva_divisa === "usd") {
+      producto.precio = +(producto.precio / valor_dolar).toFixed(2);
+    } else if (divisa_base === "usd" && nueva_divisa === "clp") {
+      producto.precio = +(producto.precio * valor_dolar).toFixed(0);
+    }
+    producto.total = +(producto.precio * producto.cantidad).toFixed(2);
+    return producto;
+  });
+
+  set_carrito(carrito);
 };

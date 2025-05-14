@@ -1,7 +1,7 @@
 import requests
 from paths import *
 from django.shortcuts import render, redirect
-from django.http import HttpResponseNotAllowed
+from django.http import HttpResponseNotAllowed, JsonResponse
 
 # Create your views here.
 def index(request):

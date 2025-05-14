@@ -1,11 +1,15 @@
 import { abrir_modal_carrito, cerrar_modal_carrito } from "./modales.js";
 import { get_producto_api } from "./api.js";
+import { get_valor_dolar } from "./get_dolar.js";
+import { despliegue_carrito } from "./carrito.js";
 import {
   add_producto,
   del_producto,
   add_cantidad,
   del_cantidad,
   set_divisa,
+  get_divisa,
+  convertir_precios,
 } from "./storage.js";
 
 /* -------------------------------------------------------- Constantes -------------------------------------------------------- */
@@ -19,7 +23,6 @@ const $carroSection = document.getElementById("carro-section");
 const $addCarroBtns = document.querySelectorAll(".add-carrito");
 
 const $selectDivisa = document.getElementById("divisa-select");
-const $flechasDivisas = document.querySelectorAll(".flechas-divisas")
 
 /* -------------------------------------------------------- Eventos -------------------------------------------------------- */
 
@@ -164,8 +167,22 @@ export function eventos() {
   /* -------------------------------------------------------- Funciones divisa -------------------------------------------------------- */
 
   /* Cambio de divisa */
-  $selectDivisa.addEventListener("change", (e) => {
-    const nuevaDivisa = e.target.value; // Se obtiene el valor seleccionado
-    set_divisa(nuevaDivisa); // Se setea el nuevo valor
+  $selectDivisa.addEventListener("change", async (e) => {
+    const divisaActual = get_divisa();
+    const nuevaDivisa = e.target.value;
+    // Se setea el nuevo valor
+    set_divisa(nuevaDivisa);
+
+    console.log("Divisa actual y divisa nueva: ", divisaActual, nuevaDivisa);
+    if (nuevaDivisa === divisaActual) return; // Si es la misma no pasa nada
+
+    // Esperar un momento para que se procese primero la solicitud de django
+    setTimeout(async () => {
+      const valor_dolar = await get_valor_dolar();
+      console.log("valor dolar de get_valor_dolar(): ", valor_dolar);
+      if (valor_dolar === null) return;
+
+      convertir_precios(divisaActual, nuevaDivisa, valor_dolar);
+    }, 500);
   });
-};
+}
