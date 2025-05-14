@@ -25,30 +25,23 @@
       >
         <!-- Resumen y cambio de divisas-->
         <header class="flex justify-between items-center px-6 pt-8 pb-4">
-          <h1 class="font-bold text-[1.5rem]">RESUMEN</h1>
+          <!-- Titulo -->
+          <h1 class="font-bold text-[1.5rem] leading-none">RESUMEN</h1>
 
           <!-- Divisas disponibles -->
-          <div class="flex-col-center">
-            <button
-              class="flex-row-center font-semibold bg-[var(--azulClaro)] px-3 py-1 rounded-lg"
-            >
-              <span class="text-[var(--rojo)]">▼</span>
-              <span class="pr-1">CLP</span>
-              <img
-                class="w-6 h-6"
-                src="{% static '/assets/images/chile.svg'%}"
-                alt=""
-              />
-            </button>
-
-            <!-- <button
-              class="flex-row-center font-semibold bg-[var(--azulClaro)] px-2 py-1 rounded-xl"
-            >
-              <span class="text-red-600">▼</span>
-              <span class="pr-1">USD</span> <img class="w-6 h-6" src="{% static '/assets/images/usa.svg'%}" alt="">
-            </button> -->
-
-            <!-- ▼ ▲ -->
+          <div class="divisa-container relative">
+            <form id="form-divisa" method="POST" action="{% url 'cambiar_divisa' %}">
+              {% csrf_token %}
+              <select
+                id="divisa-select"
+                name="divisa"
+                onchange="document.getElementById('form-divisa').submit();"
+                class="font-semibold bg-[var(--azulClaro)] px-3 py-1 rounded-lg"
+              >
+                <option value="clp">CLP 🇨🇱</option>
+                <option value="usd">USD 🇺🇸</option>
+              </select>
+            </form>
           </div>
         </header>
 
@@ -57,61 +50,31 @@
         <!-- Productos del carro -->
         <main class="flex-grow overflow-y-auto">
           <!-- Productos desde localStorage -->
-          <section class="font-medium">
-            <!-- Producto -->
-            <div class="flex justify-start w-full h-full mt-4">
-              <!-- Imagen y boton eliminar -->
-              <div class="flex-col-center w-[30%] px-6 h-full">
-                <img
-                  class="w-full h-full rounded-xl object-contain"
-                  src="{% static '/assets/images/clavos.webp' %}"
-                  alt="Cargando..."
-                />
-                <button class="pt-2">Eliminar</button>
-              </div>
-
-              <!-- Descripcion producto y contadores -->
-              <div
-                class="flex flex-col justify-start items-start w-[70%] h-full"
-              >
-                <h2>Nombre</h2>
-                <h2 class="py-2">Precio: $</h2>
-                <!-- Contadores -->
-                <div class="w-full h-full flex justify-start items-center">
-                  <button class="text-white text-3xl w-[5%]" type="button">
-                    -
-                  </button>
-
-                  <span class="px-3 text-2xl">1</span>
-
-                  <button class="text-white text-3xl w-[5%]" type="button">
-                    +
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <hr
-              class="w-full max-w-[95%] mx-auto mt-2 border-[1px] opacity-50"
-            />
-          </section>
+          <section id="carro-section" class="font-medium"></section>
         </main>
 
         <!-- Boton cerrar carro y pagar-->
-        <footer class="flex-row-center mt-auto w-full py-6">
-          <button
-            id="closeCarroBtn"
-            class="mr-4 font-bold text-[var(--azulMedio)] text-lg w-[30%] py-2 bg-white rounded-full"
-            type="button"
-          >
-            Cerrar
-          </button>
-          <button
-            class="ml-4 font-bold text-[var(--azulMedio)] text-lg w-[30%] py-2 bg-white rounded-full"
-            type="button"
-          >
-            Iniciar pago
-          </button>
+        <footer class="flex-col-center mt-auto w-full">
+          <div class="w-full max-w-[95%] pt-4">
+            <h2 class="font-semibold text-xl">
+              Total: $<span id="carro-total">0</span>
+            </h2>
+          </div>
+          <div class="w-full flex-row-center py-6">
+            <button
+              id="closeCarroBtn"
+              class="mr-4 font-bold text-[var(--azulMedio)] text-lg w-[30%] py-2 bg-white rounded-full"
+              type="button"
+            >
+              Cerrar
+            </button>
+            <button
+              class="ml-4 font-bold text-[var(--azulMedio)] text-lg w-[30%] py-2 bg-white rounded-full"
+              type="button"
+            >
+              Iniciar pago
+            </button>
+          </div>
         </footer>
       </div>
     </section>
