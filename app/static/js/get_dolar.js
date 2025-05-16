@@ -6,7 +6,6 @@ export async function get_valor_dolar() {
             console.error("Error en la response");
         } else {
             const data = await response.json();
-            console.log("Data del valor dolar: ", data)
             return data.valor;
         }
     } catch (error) {

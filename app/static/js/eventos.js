@@ -168,21 +168,39 @@ export function eventos() {
 
   /* Cambio de divisa */
   $selectDivisa.addEventListener("change", async (e) => {
-    const divisaActual = get_divisa();
+    const divisaActual = get_divisa(); 
+    console.log("Divisa actual: ", divisaActual)
     const nuevaDivisa = e.target.value;
-    // Se setea el nuevo valor
-    set_divisa(nuevaDivisa);
-
-    console.log("Divisa actual y divisa nueva: ", divisaActual, nuevaDivisa);
+    console.log("Divisa nueva: ", nuevaDivisa)
     if (nuevaDivisa === divisaActual) return; // Si es la misma no pasa nada
 
-    // Esperar un momento para que se procese primero la solicitud de django
-    setTimeout(async () => {
+    try {
+      // Obtener valor del dólar
       const valor_dolar = await get_valor_dolar();
-      console.log("valor dolar de get_valor_dolar(): ", valor_dolar);
+      console.log("Valor dolar obtenido: ", valor_dolar)
       if (valor_dolar === null) return;
 
+      const endpoint = nuevaDivisa === "usd" ? "http://127.0.0.1:5000/actualizarUSD/" : "http://127.0.0.1:5000/actualizarCLP/";
+      console.log("Endpoint para solicitud: ", endpoint)
+
+      // Solicitud PUT para actualizar precios
+      const response = await fetch(endpoint, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ valor: valor_dolar }),
+      });
+
+      if (!response.ok) throw new Error("Error al actualizar la BD");
+
+      // Actualizar localStorage
       convertir_precios(divisaActual, nuevaDivisa, valor_dolar);
-    }, 500);
+      set_divisa(nuevaDivisa);
+      console.log("Divisa y precios actualizados exitosamente");
+
+      // Se recarga la pagina
+      location.reload();
+    } catch (error) {
+      console.error("Error en el cambio de divisa: ", error);
+    }
   });
 }
