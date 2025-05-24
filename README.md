@@ -17,11 +17,29 @@ El sitio web Ferremas fue desarrollado con las siguientes tecnologias:
 
 ## Arquitectura utilizada 🏛️
 
-El sitio web Ferremas tiene una arquitectura MVT(Model - View - Template) 
+Django se basa en el patrón **MVT (Modelo - Vista - Plantilla)**, que es una adaptación del patrón **MVC (Modelo - Vista - Controlador)**. El patrón MVT es el enfoque de Django para organizar el código y el flujo de trabajo en una aplicación web. Cada componente realiza funciones específicas y luego transfiere el proceso a los demás componentes para que realicen las suyas.
+
+- **Modelo:** También conocida como capa de datos, gestiona los datos e interactúa con la base de datos.
+- **Vista:** También conocida como capa lógica, actúa como intermediario, maneja la lógica y administra el flujo de datos.
+- **Plantilla:** También conocida como capa de presentación, representa el contenido HTML en la interfaz de usuario.
+
+A continuación, se visualiza como es la comunicación entre componentes:
+
+![Imagen de cómo es el patrón arquitectónico MVT](https://espifreelancer.com/images/Django_mtv.webp)
 
 ## Requisitos previos 🔧
 
 Es necesario que tengas los siguientes programas instalados para que el proyecto se ejecute correctamente:
+
+- ``` Python 3.13.1+ ``` 
+
+- ``` Pip 25.1.1+ ``` 
+
+- ```Node 20.16.0+ ``` 
+
+- ```npm 10.8.1+ ``` 
+
+Para verificar que los tengas:
 
 1. Abre la terminal y verifica la instalación de **Python** con **"python --version"**
 2. En la terminal, verifica la instalación de **Pip** con **"pip --version"**
