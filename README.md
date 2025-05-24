@@ -1,22 +1,23 @@
 # **Ferremas**
  
-Contexto de ferremas
+Ferremas es una distribuidora establecida en la comuna de Santiago desde la década de los 80. En esta, se puede encontrar una amplia gama de productos, desde herramientas manuales y eléctricas, pinturas, materiales eléctricos, hasta accesorioss y articulos de seguridad. 
+
+Debido a la pandemia global de Covid-19 en 2020, el sector de la construcción y ferretería enfrentó desafíos, especialmente en términos de ventas físicas. Ferremas, al igual que otras empresas, experimentó una disminuición en las ventas debido a las restricciones de movilidad y a la menor afluencia de clientes. Tras varias reuniones con los administradores de las distintas sucursales, se identificó un problema crucial, Ferremas no contaba con una plataforma de venta en línea. Es por esto, que surge la necesidad de una solución de comercio electrónico lo antes posible.
 
 ## Tecnologías utilizadas 📖
 
 El sitio web Ferremas fue desarrollado con las siguientes tecnologias:
 
 1. **Python:** Lenguaje de programación utilizado para la lógica del servidor.
-2. **Django:** Framework web para crear aplicaciones web seguras y escalables.
-3. **Django Rest Framework:** Biblioteca para construir APIs RESTful.
-4. **Django Tailwind:** Herramienta para integrar el Framework de CSS Tailwind con Django.
-5. **HTML:** Lenguaje de marcado utilizado para estructurar páginas web.
-6. **CSS:** Lenguaje de estilo utilizado para diseñar la interfaz de usuario.
-7. **JavaScript:** Lenguaje de programación utilizado para hacer las páginas web interactivas.
+2. **HTML:** Lenguaje de marcado utilizado para estructurar páginas web.
+3. **CSS:** Lenguaje de estilo utilizado para diseñar la interfaz de usuario.
+4. **JavaScript:** Lenguaje de programación utilizado para hacer las páginas web interactivas.
+5. **Django:** Framework web para crear aplicaciones web seguras y escalables.
+6. **Django Tailwind:** Herramienta para integrar el Framework de CSS Tailwind con Django.
 
 ## Arquitectura utilizada 🏛️
 
-El sitio web Ferremas tiene una arquitectura MVT(Model - View - Template) en conjunto con una arquitectura Orientada a Servicios (SOA)...
+El sitio web Ferremas tiene una arquitectura MVT(Model - View - Template) 
 
 ## Requisitos previos 🔧
 
@@ -26,7 +27,6 @@ Es necesario que tengas los siguientes programas instalados para que el proyecto
 2. En la terminal, verifica la instalación de **Pip** con **"pip --version"**
 3. En la terminal, verifica la instalación de **Node.js** con **"node --version"**
 4. En la terminal, verifica la instalación de **npm** con **"npm --version"**
-
 
 ## Instalación 🔧
 
@@ -46,4 +46,7 @@ Para ejecutar el proyecto sigue los siguientes pasos:
 
 ## Integrantes 🤝
 
-Nombre de los integrantes
+- Joaquín Armijo
+- Ignacio Correa
+- Fernando Flores
+- Jaime Vergara
