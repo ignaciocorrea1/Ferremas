@@ -1,0 +1,53 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        rel="stylesheet"
+    />
+    <link rel="icon" href="{% static '/assets/images/icon.webp' %}" />
+    <title>Ferremas</title>
+    {% tailwind_css %}
+    </head>
+<body>
+  <form id="pagoForm" action="http://localhost:5000/guardar_pago" method="POST" style="display:none;">
+    <input type="hidden" name="carrito" id="carritoInput">
+    <input type="hidden" name="usuario" id="usuarioInput">
+    <input type="hidden" name="total" id="totalInput">
+    <input type="hidden" name="estado" id="estadoInput">
+    <input type="hidden" name="token" id="tokenInput">
+    <input type="hidden" name="tipo" id="tipoInput">
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const status = new URLSearchParams(window.location.search).get("estado");
+      const token = new URLSearchParams(window.location.search).get("token");
+      const carrito = JSON.parse(localStorage.getItem("Carrito"))
+      const usuario = "11.111.111";
+      
+      // Se inicializa el total
+      let totalCarro = 0;
+
+      // Se calcula por cada producto
+      carrito.forEach((item) => {
+          totalCarro += item.total;
+      });
+
+      const carritostr = JSON.stringify(carrito)
+
+      document.getElementById("carritoInput").value = carritostr;
+      document.getElementById("usuarioInput").value = usuario;
+      document.getElementById("totalInput").value = totalCarro;
+      document.getElementById("estadoInput").value = status;
+      document.getElementById("tokenInput").value = token;
+      document.getElementById("tipoInput").value = "tarjeta";
+
+      document.getElementById("pagoForm").submit();
+    });
+  </script>
+</body>
+</html>

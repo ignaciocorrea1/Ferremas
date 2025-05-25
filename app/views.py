@@ -36,3 +36,11 @@ def catalogo(request):
 def producto(request):
     context = {}
     return render(request, VER_PRODUCTO_TEMPLATE, context)
+
+def iniciarPago(request):
+    context = {}
+    return render(request, INICIAR_PAGO_TEMPLATE, context)
+
+def pago_exitoso(request):
+    estado = request.GET.get("estado", "error")
+    return render(request, PAGO_EXITOSO_TEMPLATE, {"estado": estado})

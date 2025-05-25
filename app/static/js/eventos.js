@@ -1,7 +1,8 @@
+import { despliegue_items } from "./pago.js";
 import { abrir_modal_carrito, cerrar_modal_carrito } from "./modales.js";
 import { get_producto_api } from "./api.js";
 import { get_valor_dolar } from "./get_dolar.js";
-import { despliegue_carrito } from "./carrito.js";
+import { despliegue_carrito, dataTotal } from "./carrito.js";
 import {
   add_producto,
   del_producto,
@@ -10,6 +11,7 @@ import {
   set_divisa,
   get_divisa,
   convertir_precios,
+  get_carrito
 } from "./storage.js";
 
 /* -------------------------------------------------------- Constantes -------------------------------------------------------- */
@@ -19,10 +21,13 @@ const $closeCarroBtn = document.getElementById("closeCarroBtn");
 const $modalContent = document.querySelector(".modal-content");
 const $carro = document.getElementById("modalCarro");
 const $carroSection = document.getElementById("carro-section");
+const $pagoItems = document.getElementById("pago-items");
 
 const $addCarroBtns = document.querySelectorAll(".add-carrito");
 
 const $selectDivisa = document.getElementById("divisa-select");
+
+const $webpayBtn = document.getElementById("webpayBtn");
 
 /* -------------------------------------------------------- Eventos -------------------------------------------------------- */
 
@@ -201,6 +206,48 @@ export function eventos() {
       location.reload();
     } catch (error) {
       console.error("Error en el cambio de divisa: ", error);
+    }
+  });
+
+/* ------------------------------------------------------- Funciones para pagar ------------------------------------------------------- */
+
+  // Cargar items
+  if ($pagoItems) {
+    despliegue_items()
+  }
+
+  $webpayBtn.addEventListener("click", async (e) => {
+    try {
+
+      const data = {
+        nroorden: "orden123",
+        usuario: "0",
+        total: Math.round(dataTotal().valor),
+        carrito: get_carrito() // función que retorna el array de productos
+      };
+
+      console.log(data);
+
+      const endpoint = "http://127.0.0.1:5000/crear_transaccion";
+      console.log("Endpoint para solicitud: ", endpoint)
+
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      // Obtener valor
+      const result = await response.json();
+
+      if (result.estado === "ok") {
+        // Redirigir al usuario a Webpay
+        window.location.href = result.redirect;
+      } else {
+        console.error("Error del servidor:", result.detalle);
+      }
+
+    } catch (error) {
+      console.error("Error en el inicio del pago: ", error);
     }
   });
 }
