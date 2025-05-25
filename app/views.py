@@ -2,6 +2,9 @@ import requests
 from paths import *
 from django.shortcuts import render, redirect
 from django.http import HttpResponseNotAllowed, JsonResponse
+from django.shortcuts import render, redirect
+from django.contrib.auth import login as auth_login
+from .forms import CustomAuthenticationForm
 
 # Create your views here.
 def index(request):
@@ -36,3 +39,15 @@ def catalogo(request):
 def producto(request):
     context = {}
     return render(request, VER_PRODUCTO_TEMPLATE, context)
+
+# Vista para iniciar sesión
+def login_view(request):
+    form = CustomAuthenticationForm(request, data=request.POST or None)
+
+    if request.method == "POST":
+        if form.is_valid():
+            user = form.get_user()
+            auth_login(request, user)
+            return redirect('/')  # Puedes cambiar a "index" si tienes un nombre asignado
+
+    return render(request, 'pages/login.html', {"login_form": form})
