@@ -173,7 +173,7 @@ export function eventos() {
 
   /* Cambio de divisa */
   $selectDivisa.addEventListener("change", async (e) => {
-    const divisaActual = get_divisa(); 
+    const divisaActual = get_divisa();
     console.log("Divisa actual: ", divisaActual)
     const nuevaDivisa = e.target.value;
     console.log("Divisa nueva: ", nuevaDivisa)
@@ -209,45 +209,47 @@ export function eventos() {
     }
   });
 
-/* ------------------------------------------------------- Funciones para pagar ------------------------------------------------------- */
+  /* ------------------------------------------------------- Funciones para pagar ------------------------------------------------------- */
 
   // Cargar items
   if ($pagoItems) {
     despliegue_items()
   }
 
+  if ($webpayBtn) {
   $webpayBtn.addEventListener("click", async (e) => {
     try {
-
       const data = {
         nroorden: "orden123",
         usuario: "0",
         total: Math.round(dataTotal().valor),
         carrito: get_carrito() // función que retorna el array de productos
       };
-
+      
       console.log(data);
-
+      
       const endpoint = "http://127.0.0.1:5000/crear_transaccion";
-      console.log("Endpoint para solicitud: ", endpoint)
-
+      console.log("Endpoint para solicitud: ", endpoint);
+      
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      
       // Obtener valor
       const result = await response.json();
-
+      
       if (result.estado === "ok") {
         // Redirigir al usuario a Webpay
         window.location.href = result.redirect;
       } else {
         console.error("Error del servidor:", result.detalle);
       }
-
+      
     } catch (error) {
       console.error("Error en el inicio del pago: ", error);
     }
   });
+}
 }
