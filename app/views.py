@@ -44,3 +44,7 @@ def iniciarPago(request):
 def pago_exitoso(request):
     estado = request.GET.get("estado", "error")
     return render(request, PAGO_EXITOSO_TEMPLATE, {"estado": estado})
+
+def resultado_pago(request):
+    estado = request.GET.get("estado", "error")
+    return render(request, PAGO_REULTADO_TEMPLATE, {"estado": estado})

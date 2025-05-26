@@ -988,10 +988,6 @@ body {
   height: 100vh;
 }
 
-.h-\[25\%\]{
-  height: 25%;
-}
-
 .max-h-full{
   max-height: 100%;
 }
@@ -1279,6 +1275,10 @@ body {
   border-top-right-radius: 0.5rem;
 }
 
+.border{
+  border-width: 1px;
+}
+
 .border-2{
   border-width: 2px;
 }
@@ -1288,10 +1288,6 @@ body {
 }
 
 .border-\[1px\]{
-  border-width: 1px;
-}
-
-.border{
   border-width: 1px;
 }
 
@@ -1552,6 +1548,21 @@ body {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.text-gray-600{
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
+
+.text-green-600{
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity, 1));
+}
+
+.text-red-600{
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity, 1));
 }
 
 .opacity-20{
