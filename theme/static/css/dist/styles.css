@@ -988,6 +988,10 @@ body {
   height: 100vh;
 }
 
+.h-\[25\%\]{
+  height: 25%;
+}
+
 .max-h-full{
   max-height: 100%;
 }
@@ -1284,6 +1288,10 @@ body {
 }
 
 .border-\[1px\]{
+  border-width: 1px;
+}
+
+.border{
   border-width: 1px;
 }
 

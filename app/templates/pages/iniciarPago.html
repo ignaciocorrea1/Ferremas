@@ -12,6 +12,25 @@
         <title>Ferremas</title>
         {% tailwind_css %}
     </head>
+    <style>
+        .form-container {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        width: 400px;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        }
+    </style>
     <body id="pago">
         <!-- Header -->
         {% include "base/header.html" %}
@@ -43,26 +62,45 @@
                     class="w-full h-[75%] pr-[15%] flex flex-col justify-between items-center"
                 >
                     <!-- Primera mitad informacion producto -->
-                    <div class="flex flex-col justify-start items-start">
-                        <h2 class="mb-[5%] font-bold">Nombre del producto</h2>
+                    <div class="form-container">
+                        <section id="pago-info" class="font-medium"></section>
+                        <hr>
+                        <hr>
+                        <h2>Complete el formulario</h2>
+                        <form>
+                        <label for="usuario">Usuario (RUT):</label>
+                        <input type="text" id="usuario" name="usuario" placeholder="11.111.111">
 
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit,
-                            quis architecto corporis optio beatae fugit mollitia cum sequi
-                            quisquam officiis, atque aperiam! Deserunt cupiditate dolore ex
-                            maxime ratione sapiente assumenda?
-                        </p>
+                        <label for="entrega">Método de entrega:</label>
+                        <select id="entrega" name="entrega">
+                            <option value="retiro">Retiro en local</option>
+                            <option value="envio">Envío a domicilio</option>
+                        </select>
+
+                        <div id="direccion-container">
+                            <label for="direccion">Dirección de envío (Opcional):</label>
+                            <input type="text" id="direccion" name="direccion" placeholder="Calle 123, Ciudad">
+                        </div>
+                        </form>
                     </div>
-                        <!-- Boton para añadir al carro -->
+                        <!-- Opciones de pago -->
+                        <h2>Opciones de pago</h2>
                         <div class="w-full flex-row-center">
                             <button
                             id="webpayBtn"
                             class="text-info w-[25%] py-3 bg-[var(--blancoCeleste)] rounded-full"
                             type="button"
                             >
-                            Pagar con tarjeta
+                            tarjeta
                             </button>
-                        </div>
+                            <button
+                            id="transferBtn"
+                            class="text-info w-[25%] py-3 bg-[var(--blancoCeleste)] rounded-full"
+                            type="button"
+                            >
+                            transferencia
+                            </button>
+                        
                     </div>
                 </div>
             </section>
@@ -72,58 +110,7 @@
 
             <!-- Detalle del producto -->
             <section class="mt-20 mb-[30vh] flex-col-center">
-                <table class="text-start w-[60vw]">
-                    <tbody>
-                        <tr>
-                            <td
-                            class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCeleste)]"
-                            >
-                            Marca
-                            </td>
-                            <td
-                            class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCeleste)] border-l-2 border-[var(--azulClaroTransparente)]"
-                            >
-                            XXXXXXXX
-                            </td>
-                        </tr>
-                        <tr>
-                            <td
-                            class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCelesteTransparente)]"
-                            >
-                            Categoría
-                            </td>
-                            <td
-                            class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCelesteTransparente)] border-l-2 border-[var(--azulClaroTransparente)]"
-                            >
-                            XXXXXXXX
-                            </td>
-                        </tr>
-                        <tr>
-                            <td
-                            class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCeleste)]"
-                            >
-                            Modelo
-                            </td>
-                            <td
-                            class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCeleste)] border-l-2 border-[var(--azulClaroTransparente)]"
-                            >
-                            XXXXXXXX
-                            </td>
-                        </tr>
-                        <tr>
-                            <td
-                            class="py-2 pl-6 rounded-tl-lg rounded-bl-lg bg-[var(--blancoCelesteTransparente)]"
-                            >
-                            Garantía
-                            </td>
-                            <td
-                            class="py-2 pl-6 rounded-tr-lg rounded-br-lg bg-[var(--blancoCelesteTransparente)] border-l-2 border-[var(--azulClaroTransparente)]"
-                            >
-                            XXXXXXXX
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                
             </section>
         </main>
        
