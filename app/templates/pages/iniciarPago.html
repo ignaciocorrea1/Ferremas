@@ -1,0 +1,123 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"
+        />
+        <link rel="icon" href="{% static '/assets/images/icon.webp' %}" />
+        <title>Ferremas</title>
+        {% tailwind_css %}
+    </head>
+    <style>
+        .form-container {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        width: 400px;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        }
+    </style>
+    <body id="pago">
+        <!-- Header -->
+        {% include "base/header.html" %}
+
+        <!-- Carrito -->
+        {% include "base/carro.html" %}
+        
+        <!-- Main -->
+        <main class="text-[var(--azulMedio)]">
+            <!-- Volver al catalogo -->
+            <div class="w-full mt-6 flex justify-start items-center">
+                <a
+                    href="{% url 'catalogo' %}"
+                    class="text-center text-info w-[7%] py-1 ml-4 bg-[var(--blancoCeleste)] rounded-full"
+                >
+                    Volver
+                </a>
+            </div>
+
+            <!-- Producto-->
+            <section class="grid grid-cols-2 w-full place-items-center">
+                <!-- Columna 1: Imagen del producto -->
+                <div class="w-full h-full flex justify-center items-center">
+                    <section id="pago-items" class="font-medium"></section>
+                </div>
+
+                <!-- Columna 2: Información del producto -->
+                <div
+                    class="w-full h-[75%] pr-[15%] flex flex-col justify-between items-center"
+                >
+                    <!-- Primera mitad informacion producto -->
+                    <div class="form-container">
+                        <section id="pago-info" class="font-medium"></section>
+                        <hr>
+                        <hr>
+                        <h2>Complete el formulario</h2>
+                        <form>
+                        <label for="usuario">Usuario (RUT):</label>
+                        <input type="text" id="usuario" name="usuario" placeholder="11.111.111">
+
+                        <label for="entrega">Método de entrega:</label>
+                        <select id="entrega" name="entrega">
+                            <option value="retiro">Retiro en local</option>
+                            <option value="envio">Envío a domicilio</option>
+                        </select>
+
+                        <div id="direccion-container">
+                            <label for="direccion">Dirección de envío (Opcional):</label>
+                            <input type="text" id="direccion" name="direccion" placeholder="Calle 123, Ciudad">
+                        </div>
+                        </form>
+                    </div>
+                        <!-- Opciones de pago -->
+                        <h2>Opciones de pago</h2>
+                        <div class="w-full flex-row-center">
+                            <button
+                            id="webpayBtn"
+                            class="text-info w-[25%] py-3 bg-[var(--blancoCeleste)] rounded-full"
+                            type="button"
+                            >
+                            tarjeta
+                            </button>
+                            <button
+                            id="transferBtn"
+                            class="text-info w-[25%] py-3 bg-[var(--blancoCeleste)] rounded-full"
+                            type="button"
+                            >
+                            transferencia
+                            </button>
+                        
+                    </div>
+                </div>
+            </section>
+            <hr
+            class="w-full max-w-[95%] mx-auto mt-1 border-2 border-[var(--azulMedio)] opacity-20"
+            />
+
+            <!-- Detalle del producto -->
+            <section class="mt-20 mb-[30vh] flex-col-center">
+                
+            </section>
+        </main>
+       
+        <!-- Footer -->
+        {% include "base/footer.html" %}
+
+        <!-- Scripts -->
+        <script type="module" src="{% static 'js/main.js' %}"></script>
+    </body>
+</html>

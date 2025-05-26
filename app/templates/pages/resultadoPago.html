@@ -1,0 +1,83 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"
+        />
+        <link rel="icon" href="{% static '/assets/images/icon.webp' %}" />
+        <title>Ferremas</title>
+        {% tailwind_css %}
+    </head>
+    <body id="resultadoPago">
+        <!-- Header -->
+        {% include "base/header.html" %}
+
+        <!-- Carrito -->
+        {% include "base/carro.html" %}
+        
+        <!-- Main -->
+        <main class="text-[var(--azulMedio)]">
+            <!-- Volver al catalogo -->
+            <div class="w-full mt-6 flex justify-start items-center">
+                <a
+                    href="{% url 'catalogo' %}"
+                    class="text-center text-info w-[7%] py-1 ml-4 bg-[var(--blancoCeleste)] rounded-full"
+                >
+                    Volver
+                </a>
+            </div>
+
+            <!-- Producto-->
+            <section class="grid grid-cols-2 w-full place-items-center">
+                <!-- Columna 1: Imagen del producto -->
+                <div class="w-full h-full flex justify-center items-center">
+                    <section id="pago-resultado" class="font-medium"></section>
+                </div>
+            </section>
+            <hr
+            class="w-full max-w-[95%] mx-auto mt-1 border-2 border-[var(--azulMedio)] opacity-20"
+            />
+        </main>
+       
+        <!-- Footer -->
+        {% include "base/footer.html" %}
+
+        <!-- Scripts -->
+        <script type="module" src="{% static 'js/main.js' %}"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // Obtener el parámetro "resultado" desde la URL
+                const params = new URLSearchParams(window.location.search);
+                const resultado = params.get("resultado");
+
+                // Seleccionar el contenedor donde se mostrará el resultado
+
+                const resultadoContainer = document.getElementById("pago-resultado");
+
+                if (resultadoContainer) {
+                    const mensaje = document.createElement("h2");
+                    mensaje.classList.add("text-xl", "font-semibold");
+
+                    if (resultado === "exitoso") {
+                        mensaje.textContent = "Pago realizado con éxito.";
+                        mensaje.classList.add("text-green-600");
+                    } else if (resultado === "fallido") {
+                        mensaje.textContent = "Hubo un error con el pago.";
+                        mensaje.classList.add("text-red-600");
+                    } else {
+                        mensaje.textContent = "ℹEstado de pago desconocido.";
+                        mensaje.classList.add("text-gray-600");
+                    }
+
+                    resultadoContainer.appendChild(mensaje);
+                }
+
+
+            });
+        </script>
+    </body>
+</html>

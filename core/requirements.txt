@@ -4,3 +4,4 @@ django-tailwind[reload]
 django-browser-reload
 django-cors-headers
 Pillow
+requests

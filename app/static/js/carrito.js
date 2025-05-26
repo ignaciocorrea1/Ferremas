@@ -63,3 +63,16 @@ export function calculo_total() {
   // Se manda al HTML
   $carroTotal.textContent = totalCarro;
 };
+
+export function dataTotal() {
+  const carrito = get_carrito();
+
+  // Se inicializa el total
+  let totalCarro = 0;
+
+  // Se calcula por cada producto
+  carrito.forEach((item) => {
+    totalCarro += item.total;
+  });
+  return { valor: totalCarro };
+}

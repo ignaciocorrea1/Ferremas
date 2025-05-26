@@ -65,10 +65,13 @@
               Cerrar
             </button>
             <button
+              id="initPagoBtn"
               class="ml-4 font-bold text-[var(--azulMedio)] text-lg w-[30%] py-2 bg-white rounded-full"
               type="button"
             >
-              Iniciar pago
+              <a href="{% url 'iniciarPago' %}">
+                Iniciar pago
+              </a>
             </button>
           </div>
         </footer>

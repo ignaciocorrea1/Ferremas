@@ -51,3 +51,15 @@ def login_view(request):
             return redirect('/')  # Puedes cambiar a "index" si tienes un nombre asignado
 
     return render(request, 'pages/login.html', {"login_form": form})
+
+def iniciarPago(request):
+    context = {}
+    return render(request, INICIAR_PAGO_TEMPLATE, context)
+
+def pago_exitoso(request):
+    estado = request.GET.get("estado", "error")
+    return render(request, PAGO_EXITOSO_TEMPLATE, {"estado": estado})
+
+def resultado_pago(request):
+    estado = request.GET.get("estado", "error")
+    return render(request, PAGO_REULTADO_TEMPLATE, {"estado": estado})
