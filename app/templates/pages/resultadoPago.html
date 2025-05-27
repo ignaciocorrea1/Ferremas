@@ -60,6 +60,7 @@
                     if (resultado === "exitoso") {
                         mensaje.textContent = "Pago realizado con éxito!!!!!!!!";
                         mensaje.classList.add("text-green-600");
+                        localStorage.removeItem("Carrito");
                     } else if (resultado === "denegado") {
                         mensaje.textContent = "Hubo un error con el pago :(";
                         mensaje.classList.add("text-red-600");
