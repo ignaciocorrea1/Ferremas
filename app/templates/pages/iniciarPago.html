@@ -1,123 +1,198 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-            rel="stylesheet"
-        />
-        <link rel="icon" href="{% static '/assets/images/icon.webp' %}" />
-        <title>Ferremas</title>
-        {% tailwind_css %}
-    </head>
-    <style>
-        .form-container {
-        background: #ffffff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        width: 400px;
-        }
-        input[type="text"],
-        input[type="number"],
-        select {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        }
-    </style>
-    <body id="pago">
-        <!-- Header -->
-        {% include "base/header.html" %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="{% static '/assets/images/icon.webp' %}" />
+    <title>Ferremas</title>
+    {% tailwind_css %}
+  </head>
+  <style>
+    .form-container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      width: 400px;
+    }
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+  </style>
+  <body id="pago">
+    <!-- Header -->
+    {% include "base/header.html" %}
 
-        <!-- Carrito -->
-        {% include "base/carro.html" %}
-        
-        <!-- Main -->
-        <main class="text-[var(--azulMedio)]">
-            <!-- Volver al catalogo -->
-            <div class="w-full mt-6 flex justify-start items-center">
-                <a
-                    href="{% url 'catalogo' %}"
-                    class="text-center text-info w-[7%] py-1 ml-4 bg-[var(--blancoCeleste)] rounded-full"
-                >
-                    Volver
-                </a>
+    <!-- Carrito -->
+    {% include "base/carro.html" %}
+
+    <!-- Main -->
+    <main class="text-[var(--azulMedio)]">
+      <!-- Volver al catalogo -->
+      <div class="w-full mt-6 flex justify-start items-center">
+        <a
+          href="{% url 'catalogo' %}"
+          class="text-center text-info w-[7%] py-1 ml-4 bg-[var(--blancoCeleste)] rounded-full"
+        >
+          Volver
+        </a>
+      </div>
+
+      <!-- Producto-->
+      <section class="grid grid-cols-2 w-full mb-10">
+        <!-- Columna 1: Imagen del producto -->
+        <div class="w-full h-full flex justify-center items-center">
+          <div
+            class="w-[35vw] h-[25vh] overflow-y-auto border border-gray-300 rounded"
+          >
+            <table
+              id="pago-items"
+              class="table-auto w-full text-left font-medium"
+            >
+              <thead class="bg-gray-200 top-0 z-10">
+                <tr>
+                  <th class="p-2 text-center">Producto</th>
+                  <th class="p-2 text-center">Precio</th>
+                  <th class="p-2 text-center">Cantidad</th>
+                </tr>
+              </thead>
+              <tbody id="pago-items-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Columna 2: Información del producto -->
+        <div
+          class="w-full h-[75%] pr-[15%] flex flex-col justify-between items-center"
+        >
+          <!-- Primera mitad informacion producto -->
+          <div class="form-container">
+            <section id="pago-info" class="font-medium"></section>
+            <hr class="my-4 border-2 border-[var(--azulMedio)] opacity-20" />
+            <h2 class="mb-4 text-center font-bold">Complete el formulario</h2>
+            <form>
+              <label for="usuario">Usuario (RUT):</label>
+              <input
+                type="text"
+                id="usuario"
+                name="usuario"
+                placeholder="11.111.111"
+                readonly
+              />
+
+              <label for="entrega">Método de entrega:</label>
+              <select id="entrega" name="entrega" disabled>
+                <option value="retiro">Retiro en local</option>
+                <option value="envio">Envío a domicilio</option>
+              </select>
+
+              <div id="direccion-container">
+                <label for="direccion">Dirección de envío (Opcional):</label>
+                <input
+                  type="text"
+                  id="direccion"
+                  name="direccion"
+                  placeholder="Calle 123, Ciudad"
+                  readonly
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <hr
+        class="w-full max-w-[95%] mx-auto mt-1 border-2 border-[var(--azulMedio)] opacity-20"
+      />
+
+      <!-- Detalle del producto -->
+      <section class="mt-20 mb-[30vh] flex-col-center">
+        <!-- Opciones de pago -->
+        <h2 class="font-bold text-2xl mb-4">Opciones de pago</h2>
+        <div class="w-full flex-row-center">
+          <button
+            id="webpayBtn"
+            class="text-info font-bold w-[15%] py-3 bg-[var(--blancoCeleste)] rounded-full mr-10"
+            type="button"
+          >
+            Tarjeta
+          </button>
+          <button
+            id="btnTransferencia"
+            class="text-info font-bold w-[15%] py-3 bg-[var(--blancoCeleste)] rounded-full"
+            type="button"
+          >
+            Transferencia
+          </button>
+        </div>
+
+        <!-- Modal (inicialmente oculto) -->
+        <div
+          id="modalTransferencia"
+          class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden"
+        >
+          <div class="bg-white rounded-lg p-6 w-80 shadow-lg">
+            <h2 class="text-lg font-semibold mb-4 text-center">
+              Información transferencia
+            </h2>
+
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="font-semibold">Nro. cuenta:</div>
+              <div>111111111111</div>
+
+              <div class="font-semibold">Banco:</div>
+              <div>Banco estado</div>
             </div>
 
-            <!-- Producto-->
-            <section class="grid grid-cols-2 w-full place-items-center">
-                <!-- Columna 1: Imagen del producto -->
-                <div class="w-full h-full flex justify-center items-center">
-                    <section id="pago-items" class="font-medium"></section>
-                </div>
+            <div class="flex justify-center items-center">
+              <button
+                id="cerrarModal"
+                class="mt-4 mr-0 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-                <!-- Columna 2: Información del producto -->
-                <div
-                    class="w-full h-[75%] pr-[15%] flex flex-col justify-between items-center"
-                >
-                    <!-- Primera mitad informacion producto -->
-                    <div class="form-container">
-                        <section id="pago-info" class="font-medium"></section>
-                        <hr>
-                        <hr>
-                        <h2>Complete el formulario</h2>
-                        <form>
-                        <label for="usuario">Usuario (RUT):</label>
-                        <input type="text" id="usuario" name="usuario" placeholder="11.111.111">
+    <!-- Footer -->
+    {% include "base/footer.html" %}
 
-                        <label for="entrega">Método de entrega:</label>
-                        <select id="entrega" name="entrega">
-                            <option value="retiro">Retiro en local</option>
-                            <option value="envio">Envío a domicilio</option>
-                        </select>
+    <!-- Scripts -->
+    <script type="module" src="{% static 'js/main.js' %}"></script>
+    <script>
+      const btnTransferencia = document.getElementById("btnTransferencia");
+      const modalTransferencia = document.getElementById("modalTransferencia");
+      const cerrarModal = document.getElementById("cerrarModal");
 
-                        <div id="direccion-container">
-                            <label for="direccion">Dirección de envío (Opcional):</label>
-                            <input type="text" id="direccion" name="direccion" placeholder="Calle 123, Ciudad">
-                        </div>
-                        </form>
-                    </div>
-                        <!-- Opciones de pago -->
-                        <h2>Opciones de pago</h2>
-                        <div class="w-full flex-row-center">
-                            <button
-                            id="webpayBtn"
-                            class="text-info w-[25%] py-3 bg-[var(--blancoCeleste)] rounded-full"
-                            type="button"
-                            >
-                            tarjeta
-                            </button>
-                            <button
-                            id="transferBtn"
-                            class="text-info w-[25%] py-3 bg-[var(--blancoCeleste)] rounded-full"
-                            type="button"
-                            >
-                            transferencia
-                            </button>
-                        
-                    </div>
-                </div>
-            </section>
-            <hr
-            class="w-full max-w-[95%] mx-auto mt-1 border-2 border-[var(--azulMedio)] opacity-20"
-            />
+      btnTransferencia.addEventListener("click", () => {
+        modalTransferencia.classList.remove("hidden");
+      });
 
-            <!-- Detalle del producto -->
-            <section class="mt-20 mb-[30vh] flex-col-center">
-                
-            </section>
-        </main>
-       
-        <!-- Footer -->
-        {% include "base/footer.html" %}
+      cerrarModal.addEventListener("click", () => {
+        modalTransferencia.classList.add("hidden");
+      });
 
-        <!-- Scripts -->
-        <script type="module" src="{% static 'js/main.js' %}"></script>
-    </body>
+      // Opcional: cerrar modal al hacer click fuera del contenido
+      modalTransferencia.addEventListener("click", (e) => {
+        if (e.target === modalTransferencia) {
+          modalTransferencia.classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
 </html>

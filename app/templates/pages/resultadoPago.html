@@ -31,16 +31,11 @@
                 </a>
             </div>
 
-            <!-- Producto-->
-            <section class="grid grid-cols-2 w-full place-items-center">
-                <!-- Columna 1: Imagen del producto -->
+            <section>
                 <div class="w-full h-full flex justify-center items-center">
                     <section id="pago-resultado" class="font-medium"></section>
                 </div>
             </section>
-            <hr
-            class="w-full max-w-[95%] mx-auto mt-1 border-2 border-[var(--azulMedio)] opacity-20"
-            />
         </main>
        
         <!-- Footer -->
@@ -60,23 +55,21 @@
 
                 if (resultadoContainer) {
                     const mensaje = document.createElement("h2");
-                    mensaje.classList.add("text-xl", "font-semibold");
+                    mensaje.classList.add("text-2xl", "font-semibold");
 
                     if (resultado === "exitoso") {
-                        mensaje.textContent = "Pago realizado con éxito.";
+                        mensaje.textContent = "Pago realizado con éxito!!!!!!!!";
                         mensaje.classList.add("text-green-600");
                     } else if (resultado === "denegado") {
-                        mensaje.textContent = "Hubo un error con el pago.";
+                        mensaje.textContent = "Hubo un error con el pago :(";
                         mensaje.classList.add("text-red-600");
                     } else {
-                        mensaje.textContent = "ℹEstado de pago desconocido.";
+                        mensaje.textContent = "ℹEstado de pago desconocido :(";
                         mensaje.classList.add("text-gray-600");
                     }
 
                     resultadoContainer.appendChild(mensaje);
                 }
-
-
             });
         </script>
     </body>
