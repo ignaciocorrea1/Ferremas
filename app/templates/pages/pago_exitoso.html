@@ -33,9 +33,11 @@
       let totalCarro = 0;
 
       // Se calcula por cada producto
-      carrito.forEach((item) => {
+      if (Array.isArray(carrito)) {
+        carrito.forEach((item) => {
           totalCarro += item.total;
-      });
+        });
+      }
 
       const carritostr = JSON.stringify(carrito)
 
